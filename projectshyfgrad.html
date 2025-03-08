@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>JPhotography Minimal Photographey/Photographer Portolio</title>
+    <title>Sido Ariatama</title>
     <meta name="description" content="JPhotography Minimal Photographey/Photographer Portolio">
     
     <!-- Playfair Display - Raleway Fonts -->
@@ -16,6 +16,8 @@
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <!-- Swiper Slider Styles -->
+    <link rel="stylesheet" href="css/swiper.min.css">
     <!-- Custom Styles -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/dark-theme.css">
@@ -30,7 +32,7 @@
   <body>
     <header class="container-fluid">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="index.html">Sido Ariatama</a>
+        <a class="navbar-brand" href="index.html"><img src="images/9.png" alt="SA PICTURA" height="100"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
           <span class="icon-bar i1"></span>
           <span class="icon-bar i2"></span>
@@ -42,11 +44,11 @@
             <li class="nav-item">
               <a class="nav-link" href="index.html">HOME </a>
             </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="about-me.html">ABOUT ME <span class="sr-only">(current)</span></a>
-            </li>
             <li class="nav-item">
-              <a class="nav-link" href="portfolio.html">PORTFOLIO</a>
+              <a class="nav-link" href="about-me.html">ABOUT ME</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="portfolio.html">PORTFOLIO <span class="sr-only">(current)</span></a>
             </li>
           </ul>
           
@@ -66,49 +68,61 @@
       </div>
     </section>
 
-    <section class="about-me">
+    <section class="single-project">
       <div class="container">
         <div class="section-title">
-          <h2>About me.!</h2>
-          <p>The Story Of SA.Pictura</p>
-        </div>
-        <div class="col-md-6 offset-md-3">
-            <img src="images/sido1.JPG" alt="Sido Aria - Photographer" class="img-fluid img-center">
+          <h2>Shy's Graduation</h2>
+          <p>half hidden, but my journey speaks for itseld!</p>
         </div>
         <div class="row">
-          <div class="col-md-12 my-name">
-            <h2>My Name is Sido!</h2>
-          </div>
-          <div class="col-md-4 offset-md-2">
-            <p class="text-justify"> Am From Bandung, I am a final year student at university of general achmad yani cimahi, majoring in informatics engineering. I have been shooting since I was 10 years old, but only started focusing in 2019.</p>
-          </div>
-          <div class="col-md-4">
-            <p class="text-justify"> I am happy to capture many moments that are in front of my eyes.</p>
-          </div>
-
-          <div class="col-md-8 offset-md-2">
-            <div class="progress-bars">
-              <div class="p-bar" style="width:100%">
-                <p>Photography</p>
-                  <p class="text-right">100%</p>
-              </div>
-              <div class="p-bar" style="width:90%">
-                <p>Videography</p>
-                  <p class="text-right">90%</p>
-              </div>
-              <div class="p-bar" style="width:95%">
-                <p>Editing</p>
-                  <p class="text-right">95%</p>
-              </div>
-              <div class="p-bar" style="width:80%">
-                <p>Graphic Design</p>
-                  <p class="text-right">80%</p>
-              </div>
+          <div class="col-md-12">
+            <div class="project-holder">
+              <div class="swiper-container">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide"><img src="images/project-slider/shyfagrad.jpg" alt="" class="img-fluid"></div>
+                  <div class="swiper-slide"><img src="images/project-slider/shyfagrad (2).jpg" alt="" class="img-fluid"></div>
+                  <div class="swiper-slide"><img src="images/project-slider/shyfagrad (3).jpg" alt="" class="img-fluid"></div>
+                  <div class="swiper-slide"><img src="images/project-slider/shyfagrad (4).jpg" alt="" class="img-fluid"></div>
+                </div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next"><i class="fas fa-chevron-right"></i></div>
+                <div class="swiper-button-prev"><i class="fas fa-chevron-left"></i></div>
+                </div>
             </div>
-            
           </div>
         </div>
-
+        <div class="project-details">
+          <div class="row">
+            <div class="col-md-7">
+              <div class="details-left">
+                <h2>Shyfa's Grad!</h2>
+                <p>Proses berbicara sendiri, tentang bagaimana berjuang melewati 4 tahun proses sarjana di kampus militer</p>
+              </div>
+            </div>
+            <div class="offset-md-1 col-md-4">
+              <div class="details-right">
+                <ul>
+                  <li>Client</li>
+                  <li class="devider">:</li>
+                  <li>Shyfa D</li>
+                </ul>
+                <ul>
+                  <li>Location</li>
+                  <li class="devider">:</li>
+                  <li>Peta Park Bandung, Indonesia</li>
+                </ul>
+                <ul>
+                  <li>Date</li>
+                  <li class="devider">:</li>
+                  <li>02<sup>nd</sup> May 2024</li>
+                </ul>
+                <div class="project-btns">
+                  <a href="projectgaelgrad.html" class="btn btn-invert mgR-20px">Previous</a> <a href="projectynn.html" class="btn btn-invert">Next</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -132,6 +146,15 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <script src="js/swiper.min.js"></script>
     <script src="js/custom.js"></script>
+    <script>
+      var swiper = new Swiper('.swiper-container', {
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+    </script>
   </body>
 </html>
