@@ -16,6 +16,10 @@ async function fetchData() {
   }
 }
 
+// Tambahkan baris ini di fungsi fetchData()
+const timestamp = Date.now();
+const response = await fetch(`${API_URL}&t=${timestamp}`);
+
 // Fungsi untuk mengatur konten halaman berdasarkan data
 async function updatePageContent() {
   const data = await fetchData();
