@@ -1,103 +1,425 @@
+<!-- File: portfolio.html - Halaman portfolio -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Portfolio</title>
-  
-  <!-- Playfair Display - Raleway Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900|Raleway:100,300,400,600,700" rel="stylesheet">
+  <head>
+    <base target="_top">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>Portfolio - <?= getSetting('siteName') || 'Photography Portfolio' ?></title>
+    <meta name="description" content="Portfolio of <?= getSetting('siteName') || 'Photography Portfolio' ?>">
+    
+    <!-- Playfair Display - Raleway Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900|Raleway:100,300,400,600,700" rel="stylesheet">
 
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
-  
-  <!-- Custom Styles -->
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-  <header class="container-fluid">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="index.html" id="siteName">Photography Portfolio</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarDefault">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    
+    <!-- Custom Styles -->
+    <style>
+      /* Custom styles copied from your template */
+      body {
+        font-family: 'Raleway', sans-serif;
+        line-height: 1.8;
+        color: #666666;
+      }
+      
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Playfair Display', serif;
+        color: #333333;
+      }
+      
+      /* Navbar Styles */
+      .navbar {
+        padding: 1rem 0;
+        background-color: transparent !important;
+        margin-bottom: 30px;
+      }
+      
+      .navbar-brand {
+        font-family: 'Playfair Display', serif;
+        color: #333333;
+        font-size: 25px;
+        font-weight: 700;
+      }
+      
+      .nav-link {
+        font-weight: 600;
+        letter-spacing: 1px;
+        font-size: 12px;
+        margin-left: 15px;
+      }
+      
+      /* Corner Borders */
+      .borders {
+        position: fixed;
+        z-index: 9999;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+      
+      .borders div {
+        position: absolute;
+        background-color: #fff;
+      }
+      
+      .brTL {
+        height: 30px;
+        width: 30px;
+        top: 40px;
+        left: 40px;
+        border-top: 1px solid #333;
+        border-left: 1px solid #333;
+      }
+      
+      .brTR {
+        height: 30px;
+        width: 30px;
+        top: 40px;
+        right: 40px;
+        border-top: 1px solid #333;
+        border-right: 1px solid #333;
+      }
+      
+      .brBL {
+        height: 30px;
+        width: 30px;
+        bottom: 40px;
+        left: 40px;
+        border-bottom: 1px solid #333;
+        border-left: 1px solid #333;
+      }
+      
+      .brBR {
+        height: 30px;
+        width: 30px;
+        bottom: 40px;
+        right: 40px;
+        border-bottom: 1px solid #333;
+        border-right: 1px solid #333;
+      }
+      
+      /* Section Title */
+      .section-title {
+        text-align: center;
+        margin: 30px 0 50px;
+      }
+      
+      .section-title h2 {
+        font-size: 36px;
+        margin-bottom: 10px;
+      }
+      
+      /* Gallery Section */
+      .gallery {
+        padding: 30px 0 80px;
+      }
+      
+      .controls {
+        width: 100%;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+      
+      .control {
+        position: relative;
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 0 2px;
+        font-size: 12px;
+        font-weight: 600;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        letter-spacing: 1px;
+        outline: none;
+        color: #333333;
+      }
+      
+      .control:hover {
+        color: #000;
+      }
+      
+      .control.mixitup-control-active {
+        color: #000;
+        font-weight: 700;
+      }
+      
+      .control.mixitup-control-active:after {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 1px;
+        background: #000;
+        bottom: 5px;
+        left: 50%;
+        margin-left: -10px;
+      }
+      
+      .mix-container {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      
+      .mix {
+        display: none;
+        width: 33.33%;
+        padding: 10px;
+        box-sizing: border-box;
+      }
+      
+      .thumb-a {
+        display: block;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .item-img {
+        width: 100%;
+        transition: all 0.3s ease;
+      }
+      
+      .item-img img {
+        width: 100%;
+        display: block;
+      }
+      
+      .item-hover {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+      
+      .thumb-a:hover .item-hover {
+        opacity: 1;
+      }
+      
+      .hover-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        width: 100%;
+      }
+      
+      .hover-text h3 {
+        font-size: 20px;
+        margin: 0;
+        color: #fff;
+      }
+      
+      /* Footer Styles */
+      footer {
+        padding: 60px 0;
+        background: #f9f9f9;
+      }
+      
+      .footer-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .footer-title h2 {
+        font-size: 30px;
+        margin-bottom: 10px;
+      }
+      
+      .footer-social a {
+        margin-left: 15px;
+        color: #333;
+        font-size: 16px;
+      }
+      
+      .footer-social a:hover {
+        color: #000;
+      }
+      
+      /* Responsive styles */
+      @media (max-width: 992px) {
+        .mix {
+          width: 50%;
+        }
+      }
+      
+      @media (max-width: 768px) {
+        .footer-info {
+          flex-direction: column;
+          text-align: center;
+        }
+        
+        .footer-social {
+          margin-top: 20px;
+        }
+      }
+      
+      @media (max-width: 576px) {
+        .mix {
+          width: 100%;
+        }
+        
+        .borders div {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <?
+      // Dapatkan data dari Google Sheets
+      var data = getAllData();
+      var settings = data.Settings || [];
+      var categories = data.Categories || [];
+      var portfolio = data.Portfolio || [];
+      var social = data.Social || [];
+      
+      // Fungsi helper untuk mendapatkan setting berdasarkan key
+      function getSettingValue(settings, key, defaultValue) {
+        var setting = settings.find(function(s) { return s.key === key; });
+        return setting ? setting.value : defaultValue;
+      }
+      
+      // Dapatkan pengaturan penting
+      var siteName = getSettingValue(settings, 'siteName', 'Photography Portfolio');
+      var footerText = getSettingValue(settings, 'footerText', '© Copyrights ' + new Date().getFullYear() + '. All Rights Reserved.');
+    ?>
+    
+    <header class="container-fluid">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="?page=index"><?= siteName ?></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon-bar i1"></span>
+          <span class="icon-bar i2"></span>
+          <span class="icon-bar i3"></span>
+        </button>
 
-      <div class="collapse navbar-collapse" id="navbarDefault">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">HOME</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="about.html">ABOUT ME</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="portfolio.html">PORTFOLIO<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contact.html">CONTACT</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </header>
-
-  <!-- Corner Borders -->
-  <section class="borders">
-    <div class="brTR"></div>
-    <div class="brTL"></div>
-    <div class="brBL"></div>
-    <div class="brBR"></div>
-  </section>
-
-  <div class="section-title">
-    <h2>Portfolio.!</h2>
-    <p>Some Of My Recent Works</p>
-  </div>
-
-  <section class="gallery">
-    <div class="container-fluid">
-      <div class="row">
-        <!-- MixItUp Controls -->
-        <div class="controls" id="category-controls">
-          <button type="button" class="control" data-filter="all">All</button>
-          <!-- Categories will be populated by JavaScript -->
+        <div class="collapse navbar-collapse" id="navbarDefault">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="?page=index">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="?page=about">ABOUT ME</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="?page=portfolio">PORTFOLIO <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="?page=contact">CONTACT</a>
+            </li>
+          </ul>
         </div>
-      </div>
+      </nav>
+    </header>
 
-      <div class="row">
-        <div class="fw mix-container home-gallery" id="portfolio-container">
-          <div class="loading-indicator">Loading portfolio items...</div>
-          <!-- Portfolio items will be populated by JavaScript -->
-        </div>
-      </div>
+    <!-- Corner Borders -->
+    <section class="borders">
+      <div class="brTR"></div>
+      <div class="brTL"></div>
+      <div class="brBL"></div>
+      <div class="brBR"></div>
+    </section>
+
+    <div class="section-title">
+      <h2>Portfolio.!</h2>
+      <p>Some Of My Recent Works</p>
     </div>
-  </section>
 
-  <footer>
-    <div class="container-fluid">
-      <div class="footer-info">
-        <div class="footer-title">
-          <h2 id="footer-siteName">Photography Portfolio</h2>
-          <p id="footer-text">© Copyrights 2025. All Rights Reserved.</p>
+    <section class="gallery">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- Mixit Up Controls -->
+          <div class="controls">
+            <button type="button" class="control" data-filter="all">All</button>
+            <? categories.forEach(function(category) { ?>
+              <button type="button" class="control" data-filter=".<?= category.id ?>"><?= category.name ?></button>
+            <? }); ?>
+          </div>
         </div>
-        <div class="footer-social" id="social-links">
-          <!-- Social links will be populated by JavaScript -->
+
+        <div class="row">
+          <div class="fw mix-container home-gallery">
+            <? 
+              // Filter active portfolio items and sort by order
+              var activePortfolio = portfolio.filter(function(item) { return item.active !== false; })
+                .sort(function(a, b) { return (a.order || 0) - (b.order || 0); });
+              
+              // Display portfolio items
+              activePortfolio.forEach(function(item) {
+                var categories = item.categories ? item.categories.split(',').map(function(c) { return c.trim(); }) : [];
+                var categoryClasses = categories.join(' ');
+                var projectUrl = item.projectLink ? '?page=project&id=' + item.projectLink : '#';
+            ?>
+              <div class="mix <?= categoryClasses ?>">
+                <a href="<?= projectUrl ?>" class="thumb-a">
+                  <div class="item-hover">
+                    <div class="hover-text"><h3><?= item.title ?></h3></div>
+                  </div>
+                  <div class="item-img">
+                    <img src="<?= item.image ?>" alt="<?= item.title ?>"/>
+                  </div>
+                </a>
+              </div>
+            <? }); ?>
+          </div>
         </div>
       </div>
-    </div>
-  </footer>
+    </section>
 
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/3.3.1/mixitup.min.js"></script>
-  
-  <!-- Custom JavaScript -->
-  <script src="js/script.js"></script>
-</body>
+    <footer>
+      <div class="container-fluid">
+        <div class="footer-info">
+          <div class="footer-title">
+            <h2><?= siteName ?></h2>
+            <p><?= footerText ?></p>
+          </div>
+          <div class="footer-social">
+            <? 
+              // Filter active social media links
+              var activeSocial = social.filter(function(item) { return item.active !== false && item.url; });
+              
+              // Display social media links
+              activeSocial.forEach(function(item) {
+            ?>
+              <a href="<?= item.url ?>" target="_blank"><i class="fab fa-<?= item.platform ?>"></i></a>
+            <? }); ?>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    
+    <!-- MixItUp for filtering portfolio items -->
+    <script>
+      // Add MixItUp JS content directly 
+      // (Fungsi lengkap telah ditambahkan pada template index.html)
+      
+      var containerEl = document.querySelector('.mix-container');
+
+      if (containerEl) {
+        var mixer = mixitup(containerEl, {
+          animation: {
+            effects: 'fade scale stagger(50ms)' // Set a 'stagger' effect for the loading animation
+          }
+        });
+      }
+    </script>
+  </body>
 </html>

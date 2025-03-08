@@ -1,0 +1,544 @@
+<!-- File: project.html - Halaman detail project portfolio -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <base target="_top">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <?
+      // Dapatkan data dari Google Sheets
+      var data = getAllData();
+      var settings = data.Settings || [];
+      var projectId = getParameter('id') || '';
+      var projects = data.Projects || [];
+      var activeProject = projects.find(function(p) { return p.id === projectId });
+      
+      // Fungsi helper untuk mendapatkan setting berdasarkan key
+      function getSettingValue(settings, key, defaultValue) {
+        var setting = settings.find(function(s) { return s.key === key; });
+        return setting ? setting.value : defaultValue;
+      }
+      
+      // Dapatkan pengaturan penting
+      var siteName = getSettingValue(settings, 'siteName', 'Photography Portfolio');
+      var footerText = getSettingValue(settings, 'footerText', '© Copyrights ' + new Date().getFullYear() + '. All Rights Reserved.');
+      
+      // Fungsi helper untuk mendapatkan parameter dari URL
+      function getParameter(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(window.location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+      }
+      
+      // Fungsi helper untuk mendapatkan proyek sebelumnya dan berikutnya
+      function getAdjacentProjects(projects, currentId) {
+        var activeProjects = projects.filter(function(p) { return p.active !== false; });
+        var currentIndex = activeProjects.findIndex(function(p) { return p.id === currentId; });
+        
+        var prev = null;
+        var next = null;
+        
+        if (currentIndex > 0) {
+          prev = activeProjects[currentIndex - 1];
+        } else if (activeProjects.length > 1) {
+          prev = activeProjects[activeProjects.length - 1];
+        }
+        
+        if (currentIndex < activeProjects.length - 1) {
+          next = activeProjects[currentIndex + 1];
+        } else if (activeProjects.length > 1) {
+          next = activeProjects[0];
+        }
+        
+        return { prev: prev, next: next };
+      }
+      
+      // Mendapatkan proyek sebelumnya dan berikutnya
+      var adjacentProjects = getAdjacentProjects(projects, projectId);
+    ?>
+    
+    <title><?= activeProject ? activeProject.title : 'Project' ?> - <?= siteName ?></title>
+    <meta name="description" content="<?= activeProject ? activeProject.title : 'Project' ?> - <?= siteName ?>">
+    
+    <!-- Playfair Display - Raleway Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900|Raleway:100,300,400,600,700" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    
+    <!-- Swiper Slider CSS (jika diperlukan untuk tipe slider) -->
+    <? if (activeProject && activeProject.type === 'slider') { ?>
+    <style>
+      .swiper-container {
+        width: 100%;
+        height: 100%;
+      }
+      
+      .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      
+      .swiper-button-next, .swiper-button-prev {
+        background: #fff;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 40px;
+      }
+      
+      .swiper-button-next:after, .swiper-button-prev:after {
+        font-size: 16px;
+        color: #000;
+      }
+    </style>
+    <? } ?>
+    
+    <!-- Custom Styles -->
+    <style>
+      /* Custom styles copied from your template */
+      body {
+        font-family: 'Raleway', sans-serif;
+        line-height: 1.8;
+        color: #666666;
+      }
+      
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Playfair Display', serif;
+        color: #333333;
+      }
+      
+      /* Navbar Styles */
+      .navbar {
+        padding: 1rem 0;
+        background-color: transparent !important;
+        margin-bottom: 30px;
+      }
+      
+      .navbar-brand {
+        font-family: 'Playfair Display', serif;
+        color: #333333;
+        font-size: 25px;
+        font-weight: 700;
+      }
+      
+      .nav-link {
+        font-weight: 600;
+        letter-spacing: 1px;
+        font-size: 12px;
+        margin-left: 15px;
+      }
+      
+      /* Corner Borders */
+      .borders {
+        position: fixed;
+        z-index: 9999;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+      
+      .borders div {
+        position: absolute;
+        background-color: #fff;
+      }
+      
+      .brTL {
+        height: 30px;
+        width: 30px;
+        top: 40px;
+        left: 40px;
+        border-top: 1px solid #333;
+        border-left: 1px solid #333;
+      }
+      
+      .brTR {
+        height: 30px;
+        width: 30px;
+        top: 40px;
+        right: 40px;
+        border-top: 1px solid #333;
+        border-right: 1px solid #333;
+      }
+      
+      .brBL {
+        height: 30px;
+        width: 30px;
+        bottom: 40px;
+        left: 40px;
+        border-bottom: 1px solid #333;
+        border-left: 1px solid #333;
+      }
+      
+      .brBR {
+        height: 30px;
+        width: 30px;
+        bottom: 40px;
+        right: 40px;
+        border-bottom: 1px solid #333;
+        border-right: 1px solid #333;
+      }
+      
+      /* Section Title */
+      .section-title {
+        text-align: center;
+        margin: 30px 0 50px;
+      }
+      
+      .section-title h2 {
+        font-size: 36px;
+        margin-bottom: 10px;
+      }
+      
+      /* Single Project Styles */
+      .single-project {
+        padding: 30px 0 80px;
+      }
+      
+      .project-holder {
+        margin-bottom: 50px;
+      }
+      
+      .project-video {
+        width: 100%;
+        height: 500px;
+      }
+      
+      .project-details {
+        padding-top: 30px;
+      }
+      
+      .details-left h2 {
+        margin-bottom: 20px;
+      }
+      
+      .details-right ul {
+        display: flex;
+        padding: 0;
+        margin-bottom: 15px;
+        list-style: none;
+      }
+      
+      .details-right ul li {
+        font-weight: 600;
+      }
+      
+      .details-right ul li.devider {
+        margin: 0 15px;
+      }
+      
+      .project-btns {
+        margin-top: 30px;
+      }
+      
+      .btn-invert {
+        background: transparent;
+        border: 1px solid #333;
+        padding: 10px 20px;
+        color: #333;
+        transition: all 0.3s ease;
+      }
+      
+      .btn-invert:hover {
+        background: #333;
+        color: #fff;
+      }
+      
+      .mgR-20px {
+        margin-right: 20px;
+      }
+      
+      /* Footer Styles */
+      footer {
+        padding: 60px 0;
+        background: #f9f9f9;
+      }
+      
+      .footer-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .footer-title h2 {
+        font-size: 30px;
+        margin-bottom: 10px;
+      }
+      
+      .footer-social a {
+        margin-left: 15px;
+        color: #333;
+        font-size: 16px;
+      }
+      
+      .footer-social a:hover {
+        color: #000;
+      }
+      
+      /* Responsive styles */
+      @media (max-width: 768px) {
+        .project-video {
+          height: 350px;
+        }
+        
+        .details-right {
+          margin-top: 30px;
+        }
+        
+        .footer-info {
+          flex-direction: column;
+          text-align: center;
+        }
+        
+        .footer-social {
+          margin-top: 20px;
+        }
+      }
+      
+      @media (max-width: 576px) {
+        .project-video {
+          height: 250px;
+        }
+        
+        .borders div {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="container-fluid">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="?page=index"><?= siteName ?></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon-bar i1"></span>
+          <span class="icon-bar i2"></span>
+          <span class="icon-bar i3"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarDefault">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="?page=index">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="?page=about">ABOUT ME</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="?page=portfolio">PORTFOLIO <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="?page=contact">CONTACT</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Corner Borders -->
+    <section class="borders">
+      <div class="brTR"></div>
+      <div class="brTL"></div>
+      <div class="brBL"></div>
+      <div class="brBR"></div>
+    </section>
+
+    <section class="single-project">
+      <div class="container">
+        <? if (activeProject) { ?>
+          <div class="section-title">
+            <h2><?= activeProject.type === 'slider' ? 'Project Slider' : (activeProject.type === 'video' ? 'Project Video' : 'Project') ?>.!</h2>
+            <p>More Details About The Project</p>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="project-holder">
+                <? if (activeProject.type === 'slider') { ?>
+                  <!-- Slider content -->
+                  <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                      <? 
+                        var sliderImages = activeProject.content ? activeProject.content.split('\n').filter(function(img) { return img.trim() !== ''; }) : [];
+                        sliderImages.forEach(function(img) { 
+                      ?>
+                        <div class="swiper-slide"><img src="<?= img.trim() ?>" alt="" class="img-fluid"></div>
+                      <? }); ?>
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"><i class="fas fa-chevron-right"></i></div>
+                    <div class="swiper-button-prev"><i class="fas fa-chevron-left"></i></div>
+                  </div>
+                <? } else if (activeProject.type === 'video') { ?>
+                  <!-- Video content -->
+                  <iframe class="project-video" src="<?= activeProject.content ?>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                <? } else { ?>
+                  <!-- Single image content -->
+                  <img src="<?= activeProject.content ?>" alt="<?= activeProject.title ?>" class="img-fluid">
+                <? } ?>
+              </div>
+            </div>
+          </div>
+          <div class="project-details">
+            <div class="row">
+              <div class="col-md-7">
+                <div class="details-left">
+                  <h2><?= activeProject.title ?></h2>
+                  <p><?= activeProject.description ?></p>
+                </div>
+              </div>
+              <div class="offset-md-1 col-md-4">
+                <div class="details-right">
+                  <? if (activeProject.client) { ?>
+                    <ul>
+                      <li>Client</li>
+                      <li class="devider">:</li>
+                      <li><?= activeProject.client ?></li>
+                    </ul>
+                  <? } ?>
+                  <? if (activeProject.location) { ?>
+                    <ul>
+                      <li>Location</li>
+                      <li class="devider">:</li>
+                      <li><?= activeProject.location ?></li>
+                    </ul>
+                  <? } ?>
+                  <? if (activeProject.date) { ?>
+                    <ul>
+                      <li>Date</li>
+                      <li class="devider">:</li>
+                      <li><?= activeProject.date ?></li>
+                    </ul>
+                  <? } ?>
+                  <div class="project-btns">
+                    <? if (adjacentProjects.prev) { ?>
+                      <a href="?page=project&id=<?= adjacentProjects.prev.id ?>" class="btn btn-invert mgR-20px">Previous</a>
+                    <? } ?>
+                    <? if (adjacentProjects.next) { ?>
+                      <a href="?page=project&id=<?= adjacentProjects.next.id ?>" class="btn btn-invert">Next</a>
+                    <? } ?>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <? } else { ?>
+          <div class="section-title">
+            <h2>Project Not Found</h2>
+            <p>Sorry, the requested project could not be found.</p>
+            <div class="mt-4">
+              <a href="?page=portfolio" class="btn btn-invert">Return to Portfolio</a>
+            </div>
+          </div>
+        <? } ?>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container-fluid">
+        <div class="footer-info">
+          <div class="footer-title">
+            <h2><?= siteName ?></h2>
+            <p><?= footerText ?></p>
+          </div>
+          <div class="footer-social">
+            <? 
+              // Filter active social media links
+              var social = data.Social || [];
+              var activeSocial = social.filter(function(item) { return item.active !== false && item.url; });
+              
+              // Display social media links
+              activeSocial.forEach(function(item) {
+            ?>
+              <a href="<?= item.url ?>" target="_blank"><i class="fab fa-<?= item.platform ?>"></i></a>
+            <? }); ?>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    
+    <? if (activeProject && activeProject.type === 'slider') { ?>
+    <!-- Swiper JS for slider projects -->
+    <script>
+      // Simplified version of Swiper
+      function Swiper(container, options) {
+        this.container = typeof container === 'string' ? document.querySelector(container) : container;
+        this.wrapper = this.container.querySelector('.swiper-wrapper');
+        this.slides = Array.from(this.wrapper.querySelectorAll('.swiper-slide'));
+        this.activeIndex = 0;
+        this.slidesPerView = options.slidesPerView || 1;
+        
+        // Setup navigation buttons
+        this.nextButton = this.container.querySelector('.swiper-button-next');
+        this.prevButton = this.container.querySelector('.swiper-button-prev');
+        
+        if (this.nextButton) {
+          this.nextButton.addEventListener('click', () => this.slideNext());
+        }
+        
+        if (this.prevButton) {
+          this.prevButton.addEventListener('click', () => this.slidePrev());
+        }
+        
+        // Initial setup
+        this.updateSlides();
+      }
+      
+      Swiper.prototype.slideNext = function() {
+        if (this.activeIndex < this.slides.length - 1) {
+          this.activeIndex++;
+        } else {
+          this.activeIndex = 0; // Loop back to start
+        }
+        this.updateSlides();
+      };
+      
+      Swiper.prototype.slidePrev = function() {
+        if (this.activeIndex > 0) {
+          this.activeIndex--;
+        } else {
+          this.activeIndex = this.slides.length - 1; // Loop to end
+        }
+        this.updateSlides();
+      };
+      
+      Swiper.prototype.updateSlides = function() {
+        this.slides.forEach((slide, index) => {
+          if (index === this.activeIndex) {
+            slide.style.display = 'block';
+          } else {
+            slide.style.display = 'none';
+          }
+        });
+      };
+      
+      // Initialize Swiper
+      var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 1
+      });
+    </script>
+    <? } ?>
+  </body>
+</html>

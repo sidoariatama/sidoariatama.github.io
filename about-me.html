@@ -1,4 +1,4 @@
-<!-- File: contact.html - Halaman contact portfolio -->
+<!-- File: about.html - Halaman about me portfolio -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-    <title>Contact - <?= getSetting('siteName') || 'Photography Portfolio' ?></title>
-    <meta name="description" content="Contact <?= getSetting('siteName') || 'Photography Portfolio' ?>">
+    <title>About Me - <?= getSetting('siteName') || 'Photography Portfolio' ?></title>
+    <meta name="description" content="About <?= getSetting('siteName') || 'Photography Portfolio' ?>">
     
     <!-- Playfair Display - Raleway Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900|Raleway:100,300,400,600,700" rel="stylesheet">
@@ -21,7 +21,7 @@
     
     <!-- Custom Styles -->
     <style>
-      /* Custom styles for contact page */
+      /* Custom styles copied from your template */
       body {
         font-family: 'Raleway', sans-serif;
         line-height: 1.8;
@@ -104,8 +104,8 @@
         border-right: 1px solid #333;
       }
       
-      /* Contact Section */
-      .contact-section {
+      /* About Section */
+      .about-me {
         padding: 80px 0;
       }
       
@@ -119,68 +119,41 @@
         margin-bottom: 10px;
       }
       
-      .contact-info {
-        padding: 20px;
+      .img-center {
+        display: block;
+        margin: 0 auto 30px;
+        max-width: 100%;
+      }
+      
+      .my-name {
+        text-align: center;
         margin-bottom: 30px;
-        background: #f9f9f9;
-        border-radius: 5px;
       }
       
-      .contact-info i {
-        font-size: 30px;
-        margin-right: 15px;
-        color: #333;
+      .text-justify {
+        text-align: justify;
       }
       
-      .contact-info-item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 15px;
-      }
-      
-      .contact-info-text h3 {
-        margin: 0;
-        font-size: 18px;
-      }
-      
-      .contact-form input, .contact-form textarea {
-        border: 1px solid #ddd;
-        border-radius: 0;
-      }
-      
-      .contact-form button {
-        background: #333;
-        color: #fff;
-        border: none;
-        padding: 10px 25px;
-        border-radius: 0;
-        margin-top: 10px;
-      }
-      
-      .contact-form button:hover {
-        background: #555;
-      }
-      
-      .social-links {
+      /* Progress Bars */
+      .progress-bars {
         margin-top: 30px;
       }
       
-      .social-links a {
-        display: inline-block;
-        width: 40px;
-        height: 40px;
-        text-align: center;
-        line-height: 40px;
-        border-radius: 50%;
-        background: #f1f1f1;
-        color: #333;
-        margin-right: 10px;
-        transition: all 0.3s ease;
+      .p-bar {
+        position: relative;
+        background: #f8f9fa;
+        margin-bottom: 15px;
+        padding: 10px 15px;
+        border-radius: 4px;
       }
       
-      .social-links a:hover {
-        background: #333;
-        color: #fff;
+      .p-bar p {
+        margin: 0;
+        display: inline-block;
+      }
+      
+      .p-bar p.text-right {
+        float: right;
       }
       
       /* Footer Styles */
@@ -235,6 +208,7 @@
       var data = getAllData();
       var settings = data.Settings || [];
       var profile = data.Profile && data.Profile.length > 0 ? data.Profile[0] : {};
+      var skills = data.Skills || [];
       var social = data.Social || [];
       
       // Fungsi helper untuk mendapatkan setting berdasarkan key
@@ -262,14 +236,14 @@
             <li class="nav-item">
               <a class="nav-link" href="?page=index">HOME</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="?page=about">ABOUT ME</a>
+            <li class="nav-item active">
+              <a class="nav-link" href="?page=about">ABOUT ME <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="?page=portfolio">PORTFOLIO</a>
             </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="?page=contact">CONTACT <span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+              <a class="nav-link" href="?page=contact">CONTACT</a>
             </li>
           </ul>
         </div>
@@ -284,72 +258,34 @@
       <div class="brBR"></div>
     </section>
 
-    <section class="contact-section">
+    <section class="about-me">
       <div class="container">
         <div class="section-title">
-          <h2>Contact Me.!</h2>
-          <p>Get In Touch With Me</p>
+          <h2>About me.!</h2>
+          <p>The Story Of <?= profile.name || 'Photographer' ?></p>
         </div>
-        
+        <div class="col-md-6 offset-md-3">
+            <img src="<?= profile.photo || 'https://via.placeholder.com/600x600' ?>" alt="<?= profile.name || 'Photographer' ?>" class="img-fluid img-center">
+        </div>
         <div class="row">
-          <div class="col-md-5">
-            <div class="contact-info">
-              <? if (profile.email) { ?>
-              <div class="contact-info-item">
-                <i class="fas fa-envelope"></i>
-                <div class="contact-info-text">
-                  <h3>Email</h3>
-                  <p><?= profile.email ?></p>
-                </div>
-              </div>
-              <? } ?>
-              
-              <? if (profile.phone) { ?>
-              <div class="contact-info-item">
-                <i class="fas fa-phone"></i>
-                <div class="contact-info-text">
-                  <h3>Phone</h3>
-                  <p><?= profile.phone ?></p>
-                </div>
-              </div>
-              <? } ?>
-              
-              <div class="social-links">
-                <? 
-                  // Filter active social media links
-                  var activeSocial = social.filter(function(item) { return item.active !== false && item.url; });
-                  
-                  // Display social media links
-                  activeSocial.forEach(function(item) {
-                ?>
-                  <a href="<?= item.url ?>" target="_blank"><i class="fab fa-<?= item.platform ?>"></i></a>
-                <? }); ?>
-              </div>
-            </div>
+          <div class="col-md-12 my-name">
+            <h2>My Name is <?= profile.name || 'Photographer' ?>..!</h2>
           </div>
-          
-          <div class="col-md-7">
-            <div class="contact-form">
-              <form>
-                <div class="row">
-                  <div class="col-md-6 form-group">
-                    <input type="text" name="name" class="form-control" placeholder="Your Name" required>
-                  </div>
-                  <div class="col-md-6 form-group">
-                    <input type="email" name="email" class="form-control" placeholder="Your Email" required>
-                  </div>
+          <div class="col-md-4 offset-md-2">
+            <p class="text-justify"><?= profile.about1 || 'About paragraph 1' ?></p>
+          </div>
+          <div class="col-md-4">
+            <p class="text-justify"><?= profile.about2 || 'About paragraph 2' ?></p>
+          </div>
+
+          <div class="col-md-8 offset-md-2">
+            <div class="progress-bars">
+              <? skills.forEach(function(skill) { ?>
+                <div class="p-bar" style="width:<?= skill.percentage ?>%">
+                  <p><?= skill.skill ?></p>
+                  <p class="text-right"><?= skill.percentage ?>%</p>
                 </div>
-                <div class="form-group">
-                  <input type="text" name="subject" class="form-control" placeholder="Subject" required>
-                </div>
-                <div class="form-group">
-                  <textarea name="message" class="form-control" rows="5" placeholder="Message" required></textarea>
-                </div>
-                <button type="submit" class="btn">Send Message</button>
-              </form>
-              <div class="mt-3">
-                <p><small>* Form ini hanya untuk demonstrasi dan tidak akan mengirim email. Untuk mengimplementasikan fungsi pengiriman email, diperlukan konfigurasi tambahan pada Apps Script.</small></p>
-              </div>
+              <? }); ?>
             </div>
           </div>
         </div>
