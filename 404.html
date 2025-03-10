@@ -1,0 +1,22 @@
+<script>
+    // Ambil nama file dari URL
+    var path = window.location.pathname.split("/").pop();
+  
+    // Cek apakah nama file diawali angka di aslinya (misal: "01-nama.html" -> "nama.html")
+    var pattern = /^(\d+)-(.*)$/; // Mencocokkan pola "01-nama.html" -> "nama.html"
+    var match = path.match(pattern);
+  
+    if (match) {
+      var realFile = match[0]; // "01-nama.html"
+      window.location.replace(realFile);
+    }
+  </script>
+  
+  <h1>Page Not Found</h1>
+  <p>If you are not redirected, <a id="redirect-link" href="#">click here</a>.</p>
+  <script>
+    if (match) {
+      document.getElementById("redirect-link").href = realFile;
+    }
+  </script>
+  
