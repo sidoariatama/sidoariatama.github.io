@@ -135,5 +135,182 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
     <script src="js/custom.js"></script>
+    
+<!-- Script dengan perbaikan untuk teks tetap justified saat animasi -->
+<script>
+  // Script untuk animasi teks terketik acak dan progress bar saat scroll
+  document.addEventListener('DOMContentLoaded', function() {
+    // Target elemen teks di col-md-4
+    const textElements = document.querySelectorAll('.col-md-4 p.text-justify');
+    // Target elemen progress bar
+    const progressBars = document.querySelectorAll('.p-bar');
+
+    // Set progress bar ke 0% di awal
+    progressBars.forEach(bar => {
+      // Simpan width target
+      const targetWidth = bar.style.width;
+      bar.setAttribute('data-target-width', targetWidth);
+      // Set width awal ke 0
+      bar.style.width = '0%';
+    });
+
+    // Simpan dimensi dan styling asli text element
+    textElements.forEach(el => {
+      // Simpan teks asli
+      const originalText = el.textContent;
+      el.setAttribute('data-original-text', originalText);
+      
+      // Simpan properti styling yang penting
+      const styles = window.getComputedStyle(el);
+      el.setAttribute('data-width', styles.width);
+      el.setAttribute('data-height', styles.height);
+      
+      // Buat placeholder dengan karakter non-breaking space untuk mempertahankan ukuran
+      // dan buat wadah span untuk karakter acak
+      el.innerHTML = '';
+      
+      // Buat span untuk menampung teks scramble
+      const scrambleSpan = document.createElement('span');
+      scrambleSpan.classList.add('scramble-text');
+      
+      // Masukkan karakter awal
+      for (let i = 0; i < originalText.length; i++) {
+        const charSpan = document.createElement('span');
+        charSpan.textContent = originalText[i];
+        charSpan.style.visibility = 'hidden'; // Sembunyikan dahulu
+        scrambleSpan.appendChild(charSpan);
+      }
+      
+      el.appendChild(scrambleSpan);
+    });
+
+    // Fungsi untuk mengacak teks secara bertahap menuju teks asli
+    function scrambleText(element, step, maxSteps) {
+      if (step > maxSteps) return;
+      
+      const originalText = element.getAttribute('data-original-text');
+      const originalChars = originalText.split('');
+      const randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-={}[]|;:,.<>?/'.split('');
+      
+      // Ambil semua span karakter
+      const charSpans = element.querySelectorAll('.scramble-text > span');
+      
+      // Pada step pertama, tampilkan semua span
+      if (step === 0) {
+        charSpans.forEach(span => {
+          span.style.visibility = 'visible';
+        });
+      }
+      
+      // Persentase karakter yang sudah benar
+      const completePercent = step / maxSteps;
+      const charsToComplete = Math.floor(originalChars.length * completePercent);
+      
+      // Untuk setiap karakter
+      for (let i = 0; i < charSpans.length; i++) {
+        // Jika karakter ini sudah benar (dalam batas charsToComplete), pertahankan
+        if (i < charsToComplete) {
+          charSpans[i].textContent = originalChars[i];
+        } 
+        // Jika tidak, acak lagi - tapi pertahankan spasi
+        else {
+          // Peluang untuk menjadi karakter asli meningkat sesuai progress
+          if (originalChars[i] === ' ') {
+            charSpans[i].textContent = ' '; // Pertahankan spasi
+            charSpans[i].innerHTML = '&nbsp;'; // Non-breaking space
+          } else if (Math.random() < completePercent) {
+            charSpans[i].textContent = originalChars[i];
+          } else {
+            charSpans[i].textContent = randomChars[Math.floor(Math.random() * randomChars.length)];
+          }
+        }
+      }
+      
+      // Panggil kembali fungsi dengan step berikutnya
+      setTimeout(() => {
+        scrambleText(element, step + 1, maxSteps);
+      }, 50); // Jeda antara tiap step
+    }
+
+// Fungsi untuk animasi progress bar yang tidak mempengaruhi teks
+function animateProgressBar(progressBar, targetWidth, duration) {
+  // Simpan HTML asli dari progress bar
+  const originalContent = progressBar.innerHTML;
+  
+  // Konversi target width dari string ke angka
+  const targetValue = parseFloat(targetWidth);
+  const startTime = performance.now();
+  
+  function updateWidth(currentTime) {
+    const elapsedTime = currentTime - startTime;
+    const progress = Math.min(elapsedTime / duration, 1); // Nilai antara 0-1
+    
+    // Perbarui width saja
+    progressBar.style.width = (progress * targetValue) + '%';
+    
+    // Pastikan konten tetap sama
+    if (progressBar.innerHTML !== originalContent) {
+      progressBar.innerHTML = originalContent;
+    }
+    
+    // Jika animasi belum selesai, lanjutkan
+    if (progress < 1) {
+      requestAnimationFrame(updateWidth);
+    }
+  }
+  
+  requestAnimationFrame(updateWidth);
+}
+
+    // Menggunakan Intersection Observer untuk mendeteksi elemen masuk viewport
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Jika elemen adalah teks paragraf
+          if (entry.target.classList.contains('text-justify')) {
+            scrambleText(entry.target, 0, 25); // 25 steps untuk menyelesaikan animasi
+            observer.unobserve(entry.target); // Hentikan observasi setelah animasi dimulai
+          }
+          
+          // Jika elemen adalah progress bar
+          if (entry.target.classList.contains('p-bar')) {
+            const targetWidth = entry.target.getAttribute('data-target-width');
+            animateProgressBar(entry.target, targetWidth, 1500); // Durasi 1.5 detik
+            observer.unobserve(entry.target); // Hentikan observasi setelah animasi dimulai
+          }
+        }
+      });
+    }, {
+      threshold: 0.1 // Trigger saat 10% elemen terlihat
+    });
+
+    // Observasi semua elemen teks dan progress bar
+    textElements.forEach(el => {
+      observer.observe(el);
+    });
+    
+    progressBars.forEach(bar => {
+      observer.observe(bar);
+    });
+  });
+</script>
+
+<!-- Tambahkan style pendukung untuk animasi teks -->
+<style>
+  .text-justify {
+    text-align: justify !important;
+  }
+  
+  .scramble-text {
+    display: inline;
+    white-space: normal;
+    word-wrap: break-word;
+  }
+  
+  /* Fix untuk spasi dalam animasi */
+  .scramble-text > span {
+    display: inline;
+  }
+</style>
   </body>
 </html>
