@@ -57,7 +57,7 @@
 
       <div id="hero-text">
         <div class="container">
-          <h1>Hi.. I Am Sido Ariatama!</h1>
+          <h1>Yo, Peeps! I'am...</h1>
           <h2>Chasing light, capturing moments, and telling stories across the globe!</h2>
           <h5>for me, my eyes are the best lens to enjoy the beauty of the world, and camera is the tool to capture it.</h5>
         </div>
@@ -85,7 +85,7 @@
       <div class="container">
         <div class="row">
           <div class="col-12 text-center mb-4">
-            <h2 class="section-title">Client</h2>
+            <h2 class="section-title2">Client</h2>
             <h3 class="subtitle" id="service-subtitle">Photography</h3>
           </div>
         </div>
@@ -95,9 +95,6 @@
           <div class="logo-slider-container">
             <div class="logo-slider" id="logo-slider">
               <!-- Photography logos -->
-              <div class="slide" data-category="Photography">
-                <img src="images/clients/sapictura.webp" alt="SA Pictura" class="client-logo">
-              </div>
               <div class="slide" data-category="Photography">
                 <img src="images/clients/icecamp.webp" alt="ICE Camp" class="client-logo">
               </div>
@@ -134,9 +131,6 @@
               
               <!-- Videography logos -->
               <div class="slide" data-category="Videography">
-                <img src="images/clients/sapictura.webp" alt="SA Pictura" class="client-logo">
-              </div>
-              <div class="slide" data-category="Videography">
                 <img src="images/clients/icecamp.webp" alt="ICE Camp" class="client-logo">
               </div>
               <div class="slide" data-category="Videography">
@@ -162,9 +156,6 @@
               <div class="category-divider" data-category="Videography"></div>
               
               <!-- Design logos -->
-              <div class="slide" data-category="Design">
-                <img src="images/clients/sapictura.webp" alt="SA Pictura" class="client-logo">
-              </div>
               <div class="slide" data-category="Design">
                 <img src="images/clients/icecamp.webp" alt="ICE Camp" class="client-logo">
               </div>
@@ -213,370 +204,12 @@
       </div>
     </footer>
 
-    <style>
-      /* Dynamic Text at border style */
-      .dynamic-text-boundary {
-        position: relative;
-        margin-top: -20px; /* Negative margin to move up to border */
-        margin-bottom: -20px; /* Negative margin to overlap with client-slider */
-        z-index: 10; /* Ensure it's above other content */
-      }
-      
-      .dynamic-heading {
-        font-family: 'Playfair Display', serif;
-        font-weight: 700;
-        font-size: 42px;
-        color: #fff;
-        margin: 0;
-        letter-spacing: 1px;
-        display: inline-block;
-        background-color: #222; /* Match client-slider background */
-        padding: 10px 30px;
-        border-radius: 5px;
-        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
-      }
-      
-      .changing-text {
-        position: relative;
-        display: inline-block;
-        color: #fff; /* Warna putih untuk teks berubah */
-        min-width: 10px; /* Minimum width */
-      }
-      
-      /* Cursor animation */
-      .cursor {
-        display: inline-block;
-        width: 3px;
-        color: #fff;
-        animation: blink 0.7s infinite;
-        font-weight: 100;
-      }
-      
-      @keyframes blink {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0; }
-      }
-
-      /* Client Slider Styles */
-      .client-slider {
-        padding: 50px 0 30px 0; /* Increased padding-top to account for overlapping text */
-        background-color: #222;
-        position: relative;
-        overflow: hidden;
-        margin-top: 0px;
-      }
-      
-      .section-title {
-        font-family: 'Playfair Display', serif;
-        font-weight: 700;
-        font-size: 36px;
-        margin-bottom: -160px;
-        color: #fff;
-      }
-      
-      .subtitle {
-        font-family: 'Raleway', sans-serif;
-        font-weight: 300;
-        font-size: 24px;
-        margin-bottom: 60px;
-        transition: opacity 0.15s ease !important;
-        color: #fff;
-      }
-      
-      /* Infinite Slider Solution */
-      .slider-container {
-        width: 100%;
-        overflow: hidden;
-        position: relative;
-      }
-      
-      .logo-slider-container {
-        overflow: hidden;
-        width: 100%;
-      }
-      
-      .logo-slider {
-        display: flex;
-        position: relative;
-        will-change: transform;
-      }
-      
-      .slide {
-        min-width: 100px;
-        height: 100px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: -100px;
-        flex-shrink: 0;
-      }
-      
-      /* Category divider */
-      .category-divider {
-        min-width: 100px;
-        height: 100px;
-        flex-shrink: 0;
-        position: relative;
-      }
-
-      .category-divider::after {
-        content: '';
-        position: absolute;
-        top: 20px;
-        bottom: 20px;
-        left: 50%;
-        width: 2px;
-        background-color: rgba(255, 255, 255, 0.2);
-      }
-
-      .category-divider::before {
-        content: none;
-      }
-      
-      .client-logo {
-        max-width: 100%;
-        max-height: 80px;
-        filter: grayscale(80%) brightness(1.5);
-        transition: filter 0.3s ease, transform 0.3s ease;
-      }
-      
-      .client-logo:hover {
-        filter: grayscale(0%);
-        transform: scale(1.1);
-      }
-      
-      /* Gradient overlays for fade effect */
-      .slider-gradient {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 150px;
-        z-index: 5;
-        pointer-events: none;
-      }
-      
-      .slider-gradient.left {
-        left: 0;
-        background: linear-gradient(to right, #222 0%, rgba(34, 34, 34, 0) 100%);
-      }
-      
-      .slider-gradient.right {
-        right: 0;
-        background: linear-gradient(to left, #222 0%, rgba(34, 34, 34, 0) 100%);
-      }
-      
-      /* Responsive adjustments */
-      @media (max-width: 768px) {
-        .dynamic-heading {
-          font-size: 32px;
-          padding: 8px 20px;
-        }
-        
-        .section-title {
-          font-size: 28px;
-        }
-        
-        .subtitle {
-          font-size: 20px;
-        }
-        
-        .slide {
-          min-width: 150px;
-        }
-        
-        .category-divider {
-          min-width: 60px;
-        }
-        
-        .slider-gradient {
-          width: 100px;
-        }
-      }
-    </style>
 
     <!-- jQuery, Popper.js, Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 
-    <script>
-      // Typing effect script
-      document.addEventListener('DOMContentLoaded', function() {
-        const changingTextElement = document.getElementById('changing-text');
-        const textOptions = [
-          "Photographer", 
-          "Videographer", 
-          "Editor", 
-          "Graphic Designer", 
-          "Coding Enthusiast",
-          "Jesus Son"
-        ];
-        
-        let currentIndex = 0;
-        let isDeleting = false;
-        let charIndex = 0;
-        let typingSpeed = 100; // Milliseconds per character
-        let deletingSpeed = 100; // Faster deleting
-        let pauseEnd = 2000; // Pause at end of word
-        let pauseStart = 1000; // Pause before typing new word
-        
-        function typeText() {
-          const currentText = textOptions[currentIndex];
-          
-          if (isDeleting) {
-            // Deleting text
-            changingTextElement.textContent = currentText.substring(0, charIndex - 1);
-            charIndex--;
-            
-            // When deletion is complete
-            if (charIndex <= 0) {
-              isDeleting = false;
-              currentIndex = (currentIndex + 1) % textOptions.length;
-              // Pause before typing next word
-              setTimeout(typeText, pauseStart);
-              return;
-            }
-            
-            setTimeout(typeText, deletingSpeed);
-          } else {
-            // Typing text
-            changingTextElement.textContent = currentText.substring(0, charIndex + 1);
-            charIndex++;
-            
-            // When typing is complete
-            if (charIndex >= currentText.length) {
-              isDeleting = true;
-              // Pause at end of word
-              setTimeout(typeText, pauseEnd);
-              return;
-            }
-            
-            setTimeout(typeText, typingSpeed);
-          }
-        }
-        
-        // Start typing
-        setTimeout(typeText, pauseStart);
-      });
-
-      // Smooth infinite slider
-      document.addEventListener('DOMContentLoaded', function() {
-        const slider = document.getElementById('logo-slider');
-        const subtitleElement = document.getElementById('service-subtitle');
-        const slides = document.querySelectorAll('.slide');
-        const dividers = document.querySelectorAll('.category-divider');
-        
-        // Buat map kategori
-        let categories = [];
-        let categoryMap = {};
-        
-        // Buat array kategori unik dan map divider
-        slides.forEach(slide => {
-          const category = slide.getAttribute('data-category');
-          if (!categoryMap[category]) {
-            categoryMap[category] = true;
-            categories.push(category);
-          }
-        });
-        
-        // Set initial subtitle
-        let currentCategory = categories[0];
-        subtitleElement.textContent = currentCategory;
-        
-        // Clone slides dan dividers untuk membuat set duplikat
-        // ini penting untuk efek infinite scroll yang mulus
-        const allItems = [...slides, ...dividers];
-        
-        // Clone seluruh set slide dan divider
-        allItems.forEach(item => {
-          const clone = item.cloneNode(true);
-          slider.appendChild(clone);
-        });
-        
-        // Set kategori berikutnya untuk semua divider
-        document.querySelectorAll('.category-divider').forEach((divider, index) => {
-          const categoryIndex = index % categories.length;
-          const nextCategoryIndex = (categoryIndex + 1) % categories.length;
-          const nextCategory = categories[nextCategoryIndex];
-          divider.setAttribute('data-next-category', nextCategory);
-        });
-        
-        // Tentukan total lebar slider
-        let sliderWidth = 0;
-        allItems.forEach(item => {
-          sliderWidth += item.offsetWidth;
-        });
-        
-        // Mulai animasi dengan JavaScript (lebih mulus daripada CSS animation)
-        let position = 0;
-        let speed = 1.5; // pixel per frame
-        
-        function animateSlider() {
-          position -= speed;
-          
-          // Ketika mencapai setengah lebar (satu set item), reset ke awal
-          // untuk menciptakan ilusi infinite scrolling tanpa jeda
-          if (Math.abs(position) >= sliderWidth) {
-            position = 0;
-          }
-          
-          slider.style.transform = `translateX(${position}px)`;
-          
-          // Deteksi kategori untuk subtitle
-          updateCategory();
-          
-          requestAnimationFrame(animateSlider);
-        }
-        
-        // Fungsi untuk memperbarui subtitel kategori
-        function updateCategory() {
-          const containerWidth = document.querySelector('.slider-container').offsetWidth;
-          const containerCenter = containerWidth / 2;
-          const sliderRect = slider.getBoundingClientRect();
-          
-          // Ambil semua divider
-          const allDividers = document.querySelectorAll('.category-divider');
-          
-          // Cek setiap divider yang melewati tengah viewport
-          allDividers.forEach(divider => {
-            const dividerRect = divider.getBoundingClientRect();
-            // Posisi relatif terhadap container
-            const relativePos = dividerRect.left - sliderRect.left;
-            const absolutePos = relativePos - Math.abs(position);
-            
-            // Container center area (lebar 50px)
-            const centerMin = containerCenter - 2;
-            const centerMax = containerCenter + 2;
-            
-            // Jika divider melewati tengah
-            if (absolutePos >= centerMin && absolutePos <= centerMax) {
-              const nextCategory = divider.getAttribute('data-next-category');
-              if (nextCategory && nextCategory !== currentCategory) {
-                // Update subtitle
-                subtitleElement.style.opacity = 0;
-                
-                setTimeout(() => {
-                  currentCategory = nextCategory;
-                  subtitleElement.textContent = nextCategory;
-                  subtitleElement.style.opacity = 1;
-                }, 50);
-              }
-            }
-          });
-        }
-        
-        // Mulai animasi
-        requestAnimationFrame(animateSlider);
-        
-        // Pause animation on hover
-        slider.addEventListener('mouseenter', function() {
-          speed = 0.3; // Pause
-        });
-        
-        slider.addEventListener('mouseleave', function() {
-          speed = 1.5; // Resume
-        });
-      });
-    </script>
+    <script src="js/custom.js"></script>
   </body>
 </html>

@@ -32,7 +32,7 @@
   <body>
     <header class="container-fluid">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="index.html"><img src="images/5.png" alt="SA PICTURA" height="60"></a>
+        <a class="navbar-brand" href="index.html">Sido Ariatama</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
           <span class="icon-bar i1"></span>
           <span class="icon-bar i2"></span>
@@ -70,63 +70,13 @@
 
     <section class="about-me">
       <div class="container">
-        <!-- Bagian Hero yang ditambahkan dari template Nino -->
-        <div class="row hero-row">
-          <div class="col-lg-12">
-            <div class="hero-content text-center">
-              <h2 class="hero-name">Sido Ariatama</h2>
-            </div>
-          </div>
-        </div>
-        <div class="row hero-row">
-          <div class="col-lg-3 col-md-3 pt-30">
-            <div class="hero-content">
-              <div class="clienti-reviews">
-               <!-- <ul class="clienti-profile">
-                  <li>
-                    <img class="img-fluid" src="images/client1.jpg" alt="client">
-                  </li>
-                  <li>
-                    <img class="img-fluid" src="images/client2.jpg" alt="client">
-                  </li>
-                  <li>
-                    <img class="img-fluid" src="images/client3.jpg" alt="client">
-                  </li>
-                </ul> -->
-                <div class="reviews">More than 50 creations<span><br>not all are listed in the portfolio</span>
-                  <p>Photopgraphy &nbsp: 62
-                    <br> Videography  &nbsp &nbsp : 13
-                    <br> Website & App : 2
-                    <br> Deisgn &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp: 10</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6 col-md-6">
-            <div class="hero-image">
-              <img src="images/sido.JPG" alt="Sido Ariatama">
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-3 pt-30">
-            <div class="hero-content">
-              <p><br>Get to know me better! See About Me and the story behind my work.</p>
-              <a class="theme-btn" href="https://wa.me/6281321472571?text=Halo,%20saya%20tertarik%20dengan%20layanan%20Anda!">Get In touch</a>
-              <a class="theme-btn" href="portfolio.html">Take a peek at my work!</a>
-            </div>
-          </div>
-        </div>
-        <!-- Akhir dari bagian Hero yang ditambahkan -->
-    
-        
-        <!-- Konten original about-me Anda yang tetap dipertahankan -->
-         <!--
         <div class="section-title">
           <h2>About me.!</h2>
           <p>The Story Of SA.Pictura</p>
         </div>
         <div class="col-md-6 offset-md-3">
-          <img src="images/sido.JPG" alt="Sido Aria - Photographer" class="img-fluid img-center">
-        </div>  -->
+            <img src="images/sido.JPG" alt="Sido Aria - Photographer" class="img-fluid img-center">
+        </div>
         <div class="row">
           <div class="col-md-12 my-name">
             <h2>My Name is Sido!</h2>
@@ -137,28 +87,30 @@
           <div class="col-md-4">
             <p class="text-justify">Besides photography and videography, of course, I enjoy being creative in graphic design, which is of course not only about creating beautiful visual products but also creating communication within them.</p>
           </div>
-     
+
           <div class="col-md-8 offset-md-2">
             <div class="progress-bars">
               <div class="p-bar" style="width:100%">
                 <p>Photography</p>
-                <p class="text-right">100%</p>
+                  <p class="text-right">100%</p>
               </div>
               <div class="p-bar" style="width:90%">
                 <p>Videography</p>
-                <p class="text-right">90%</p>
+                  <p class="text-right">90%</p>
               </div>
               <div class="p-bar" style="width:95%">
                 <p>Editing <br> <span style="font-size: 0.7em;">Photoshop - Premiere Pro - After Effect</span></p>
-                <p class="text-right">95%</p>
+                  <p class="text-right">95%</p>
               </div>
               <div class="p-bar" style="width:90%">
                 <p>Graphic Design <br> <span style="font-size: 0.7em;">Photoshop - Illustrator - Animate - Canva - Figma</span></p>
-                <p class="text-right">90%</p>
+                  <p class="text-right">90%</p>
               </div>
             </div>
+            
           </div>
         </div>
+
       </div>
     </section>
 
@@ -178,12 +130,170 @@
       </div>
     </footer>
 
-
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
     <script src="js/custom.js"></script>
+    
+<!-- Script dengan perbaikan untuk teks tetap justified saat animasi -->
+<script>
+  // Script untuk animasi teks terketik acak dan progress bar saat scroll
+  document.addEventListener('DOMContentLoaded', function() {
+    // Target elemen teks di col-md-4
+    const textElements = document.querySelectorAll('.col-md-4 p.text-justify');
+    // Target elemen progress bar
+    const progressBars = document.querySelectorAll('.p-bar');
+
+    // Set progress bar ke 0% di awal
+    progressBars.forEach(bar => {
+      // Simpan width target
+      const targetWidth = bar.style.width;
+      bar.setAttribute('data-target-width', targetWidth);
+      // Set width awal ke 0
+      bar.style.width = '0%';
+    });
+
+    // Simpan dimensi dan styling asli text element
+    textElements.forEach(el => {
+      // Simpan teks asli
+      const originalText = el.textContent;
+      el.setAttribute('data-original-text', originalText);
+      
+      // Simpan properti styling yang penting
+      const styles = window.getComputedStyle(el);
+      el.setAttribute('data-width', styles.width);
+      el.setAttribute('data-height', styles.height);
+      
+      // Buat placeholder dengan karakter non-breaking space untuk mempertahankan ukuran
+      // dan buat wadah span untuk karakter acak
+      el.innerHTML = '';
+      
+      // Buat span untuk menampung teks scramble
+      const scrambleSpan = document.createElement('span');
+      scrambleSpan.classList.add('scramble-text');
+      
+      // Masukkan karakter awal
+      for (let i = 0; i < originalText.length; i++) {
+        const charSpan = document.createElement('span');
+        charSpan.textContent = originalText[i];
+        charSpan.style.visibility = 'hidden'; // Sembunyikan dahulu
+        scrambleSpan.appendChild(charSpan);
+      }
+      
+      el.appendChild(scrambleSpan);
+    });
+
+    // Fungsi untuk mengacak teks secara bertahap menuju teks asli
+    function scrambleText(element, step, maxSteps) {
+      if (step > maxSteps) return;
+      
+      const originalText = element.getAttribute('data-original-text');
+      const originalChars = originalText.split('');
+      const randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-={}[]|;:,.<>?/'.split('');
+      
+      // Ambil semua span karakter
+      const charSpans = element.querySelectorAll('.scramble-text > span');
+      
+      // Pada step pertama, tampilkan semua span
+      if (step === 0) {
+        charSpans.forEach(span => {
+          span.style.visibility = 'visible';
+        });
+      }
+      
+      // Persentase karakter yang sudah benar
+      const completePercent = step / maxSteps;
+      const charsToComplete = Math.floor(originalChars.length * completePercent);
+      
+      // Untuk setiap karakter
+      for (let i = 0; i < charSpans.length; i++) {
+        // Jika karakter ini sudah benar (dalam batas charsToComplete), pertahankan
+        if (i < charsToComplete) {
+          charSpans[i].textContent = originalChars[i];
+        } 
+        // Jika tidak, acak lagi - tapi pertahankan spasi
+        else {
+          // Peluang untuk menjadi karakter asli meningkat sesuai progress
+          if (originalChars[i] === ' ') {
+            charSpans[i].textContent = ' '; // Pertahankan spasi
+            charSpans[i].innerHTML = '&nbsp;'; // Non-breaking space
+          } else if (Math.random() < completePercent) {
+            charSpans[i].textContent = originalChars[i];
+          } else {
+            charSpans[i].textContent = randomChars[Math.floor(Math.random() * randomChars.length)];
+          }
+        }
+      }
+      
+      // Panggil kembali fungsi dengan step berikutnya
+      setTimeout(() => {
+        scrambleText(element, step + 1, maxSteps);
+      }, 50); // Jeda antara tiap step
+    }
+
+// Fungsi untuk animasi progress bar yang tidak mempengaruhi teks
+function animateProgressBar(progressBar, targetWidth, duration) {
+  // Simpan HTML asli dari progress bar
+  const originalContent = progressBar.innerHTML;
+  
+  // Konversi target width dari string ke angka
+  const targetValue = parseFloat(targetWidth);
+  const startTime = performance.now();
+  
+  function updateWidth(currentTime) {
+    const elapsedTime = currentTime - startTime;
+    const progress = Math.min(elapsedTime / duration, 1); // Nilai antara 0-1
+    
+    // Perbarui width saja
+    progressBar.style.width = (progress * targetValue) + '%';
+    
+    // Pastikan konten tetap sama
+    if (progressBar.innerHTML !== originalContent) {
+      progressBar.innerHTML = originalContent;
+    }
+    
+    // Jika animasi belum selesai, lanjutkan
+    if (progress < 1) {
+      requestAnimationFrame(updateWidth);
+    }
+  }
+  
+  requestAnimationFrame(updateWidth);
+}
+
+    // Menggunakan Intersection Observer untuk mendeteksi elemen masuk viewport
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Jika elemen adalah teks paragraf
+          if (entry.target.classList.contains('text-justify')) {
+            scrambleText(entry.target, 0, 25); // 25 steps untuk menyelesaikan animasi
+            observer.unobserve(entry.target); // Hentikan observasi setelah animasi dimulai
+          }
+          
+          // Jika elemen adalah progress bar
+          if (entry.target.classList.contains('p-bar')) {
+            const targetWidth = entry.target.getAttribute('data-target-width');
+            animateProgressBar(entry.target, targetWidth, 1500); // Durasi 1.5 detik
+            observer.unobserve(entry.target); // Hentikan observasi setelah animasi dimulai
+          }
+        }
+      });
+    }, {
+      threshold: 0.1 // Trigger saat 10% elemen terlihat
+    });
+
+    // Observasi semua elemen teks dan progress bar
+    textElements.forEach(el => {
+      observer.observe(el);
+    });
+    
+    progressBars.forEach(bar => {
+      observer.observe(bar);
+    });
+  });
+</script>
 
 <!-- Tambahkan style pendukung untuk animasi teks -->
 <style>

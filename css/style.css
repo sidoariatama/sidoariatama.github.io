@@ -406,6 +406,62 @@ a:hover {
 
 }
 
+/* Efek hover untuk portfolio item */
+.mix .thumb-a {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  /* Efek zoom pada gambar saat hover */
+  .mix .thumb-a:hover .item-img img {
+    transform: scale(1.1); /* Membesar 10% */
+    transition: transform 0.5s ease;
+  }
+  
+  /* Style dasar untuk gambar */
+  .mix .item-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  
+  /* Memastikan item-hover tetap terlihat saat hover */
+  .mix .thumb-a:hover .item-hover {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* Style untuk teks hover */
+  .mix .item-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 2;
+  }
+  
+  .mix .hover-text {
+    padding: 15px;
+    text-align: center;
+  }
+  
+  .mix .hover-text h3 {
+    color: #fff;
+    margin: 0;
+    font-size: 22px;
+  }
+
 
 /*===========
 Home Page Gallery
@@ -493,8 +549,8 @@ box-shadow: inset 0px 0px 20px rgba(0,0,0,0.1), inset 0px 0px 20px rgba(0,0,0,0.
 
 .section-title {
     text-align: center;
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 
 .section-title p {
@@ -837,3 +893,333 @@ footer a:hover {
         font-size: 22px;
     }
 }
+
+      /* Dynamic Text at border style */
+      .dynamic-text-boundary {
+        position: relative;
+        margin-top: 50px; /* Negative margin to move up to border */
+        margin-bottom: -35px; /* Negative margin to overlap with client-slider */
+        z-index: 10; /* Ensure it's above other content */
+      }
+      
+      .dynamic-heading {
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        font-size: 40px;
+        color: #fff;
+        margin: 0;
+        letter-spacing: 1px;
+        display: inline-block;
+        background-color: #222; /* Match client-slider background */
+        padding: 10px 30px;
+        border-radius: 5px;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+      }
+      
+      .changing-text {
+        position: relative;
+        display: inline-block;
+        color: #fff; /* Warna putih untuk teks berubah */
+        min-width: 10px; /* Minimum width */
+      }
+      
+      /* Cursor animation */
+      .cursor {
+        display: inline-block;
+        width: 3px;
+        color: #fff;
+        animation: blink 0.7s infinite;
+        font-weight: 100;
+      }
+      
+      @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+      }
+
+      /* Client Slider Styles */
+      .client-slider {
+        padding: 150px 0 30px 0; /* Increased padding-top to account for overlapping text */
+        background-color: #222;
+        position: relative;
+        overflow: hidden;
+        margin-top: 0px;
+      }
+      
+      .section-title2 {
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        font-size: 36px;
+        margin-bottom: -85px;
+        color: #fff;
+      }
+      
+      .subtitle {
+        font-family: 'Raleway', sans-serif;
+        font-weight: 300;
+        font-size: 24px;
+        margin-bottom: 60px;
+        transition: opacity 0.15s ease !important;
+        color: #fff;
+      }
+      
+      /* Infinite Slider Solution */
+      .slider-container {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+      }
+      
+      .logo-slider-container {
+        overflow: hidden;
+        width: 100%;
+      }
+      
+      .logo-slider {
+        display: flex;
+        position: relative;
+        will-change: transform;
+      }
+      
+      .slide {
+        min-width: 100px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: -100px;
+        flex-shrink: 0;
+      }
+      
+      /* Category divider */
+      .category-divider {
+        min-width: 100px;
+        height: 100px;
+        flex-shrink: 0;
+        position: relative;
+      }
+
+      .category-divider::after {
+        content: '';
+        position: absolute;
+        top: 20px;
+        bottom: 20px;
+        left: 50%;
+        width: 2px;
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+
+      .category-divider::before {
+        content: none;
+      }
+      
+      .client-logo {
+        max-width: 100%;
+        max-height: 80px;
+        filter: grayscale(80%) brightness(1.5);
+        transition: filter 0.3s ease, transform 0.3s ease;
+      }
+      
+      .client-logo:hover {
+        filter: grayscale(0%);
+        transform: scale(1.1);
+      }
+      
+      /* Gradient overlays for fade effect */
+      .slider-gradient {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 150px;
+        z-index: 5;
+        pointer-events: none;
+      }
+      
+      .slider-gradient.left {
+        left: 0;
+        background: linear-gradient(to right, #222 0%, rgba(34, 34, 34, 0) 100%);
+      }
+      
+      .slider-gradient.right {
+        right: 0;
+        background: linear-gradient(to left, #222 0%, rgba(34, 34, 34, 0) 100%);
+      }
+      
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .dynamic-heading {
+          font-size: 32px;
+          padding: 8px 20px;
+        }
+        
+        .section-title2 {
+          font-size: 28px;
+        }
+        
+        .subtitle {
+          font-size: 20px;
+        }
+        
+        .slide {
+          min-width: 150px;
+        }
+        
+        .category-divider {
+          min-width: 60px;
+        }
+        
+        .slider-gradient {
+          width: 100px;
+        }
+      }
+
+/* Hero Section Styles untuk about-me.html */
+.hero-row {
+    margin-bottom: 40px;
+  }
+  
+  .hero-content .hero-name {
+    font-weight: 1000;
+    font-size: 135px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: -55px;
+  }
+  
+  .hero-content p {
+    margin-bottom: 20px;
+  }
+  
+  .hero-image {
+    text-align: center;
+    position: relative;
+  }
+  
+  .hero-image img {
+    max-width: 90%;
+    text-align: center;
+    border-radius: 20px;
+    border: 3px solid #fff;
+    transform: rotate(5deg);
+    transition: transform 1s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .hero-image img:hover {
+    transform: rotate(0deg);
+    transition: transform 0.4s;
+  }
+  
+  /* Client Reviews Styles */
+  .clienti-reviews .clienti-profile {
+    list-style-type: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .clienti-reviews .clienti-profile li {
+    flex: 0 0 50px;
+    height: 50px;
+    width: 50px;
+    margin-left: -15px;
+    border-radius: 100%;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    overflow: hidden;
+  }
+  
+  .clienti-reviews .clienti-profile li img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 100%;
+  }
+  
+  .clienti-reviews .clienti-profile li:first-child {
+    margin-left: 0px;
+  }
+  
+  .clienti-reviews .reviews {
+    font-size: 18px;
+    font-weight: 500;
+    display: block;
+    margin-top: 20px;
+  }
+  
+  .clienti-reviews .reviews span {
+    color: #888;
+    font-size: 16px;
+  }
+  
+  .clienti-reviews .reviews p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  /* Button Styles */
+  .theme-btn {
+    background: #333;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    border: 1px solid rgba(0,0,0,0.1);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    margin: 10px 0;
+    border-radius: 4px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .theme-btn:hover {
+    background: transparent;
+    color: #333;
+    text-decoration: none;
+    border-color: #333;
+  }
+  
+  /* Utility Classes */
+  .pt-30 {
+    padding-top: 30px;
+  }
+  
+  /* Responsiveness */
+  @media (max-width: 992px) {
+    .hero-content .hero-name {
+      font-size: 40px;
+    }
+    
+    .clienti-reviews .reviews {
+      font-size: 16px;
+    }
+    
+    .hero-image img {
+      max-width: 80%;
+      margin: 20px auto;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .hero-row .col-lg-3, 
+    .hero-row .col-lg-6 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .clienti-reviews {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .hero-content .hero-name {
+      font-size: 36px;
+    }
+  }
+
+  
