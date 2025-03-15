@@ -406,36 +406,28 @@ a:hover {
 
 }
 
-/* Efek hover untuk portfolio item */
-.mix .thumb-a {
+/* Efek hover untuk portfolio item versi 2 */
+.mix .thumb-a2 {
     display: block;
     position: relative;
     overflow: hidden;
     transition: all 0.3s ease;
-  }
+}
   
-  /* Efek zoom pada gambar saat hover */
-  .mix .thumb-a:hover .item-img img {
+/* Efek zoom pada gambar saat hover versi 2 */
+.mix .thumb-a2:hover .item-img img {
     transform: scale(1.1); /* Membesar 10% */
     transition: transform 0.5s ease;
-  }
+}
   
-  /* Style dasar untuk gambar */
-  .mix .item-img img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: transform 0.5s ease;
-  }
-  
-  /* Memastikan item-hover tetap terlihat saat hover */
-  .mix .thumb-a:hover .item-hover {
+/* Memastikan item-hover2 tetap terlihat saat hover */
+.mix .thumb-a2:hover .item-hover2 {
     opacity: 1;
     visibility: visible;
-  }
+}
   
-  /* Style untuk teks hover */
-  .mix .item-hover {
+/* Style untuk teks hover versi 2 */
+.mix .item-hover2 {
     position: absolute;
     top: 0;
     left: 0;
@@ -449,18 +441,18 @@ a:hover {
     visibility: hidden;
     transition: all 0.3s ease;
     z-index: 2;
-  }
+}
   
-  .mix .hover-text {
+.mix .hover-text2 {
     padding: 15px;
     text-align: center;
-  }
+}
   
-  .mix .hover-text h3 {
+.mix .hover-text2 h3 {
     color: #fff;
     margin: 0;
     font-size: 22px;
-  }
+}
 
 
 /*===========
