@@ -857,7 +857,7 @@ footer a:hover {
         
         /* Pastikan navigasi slider terlihat dengan baik */
         .slider-arrow-2 {
-            display: block !important;
+            display: none !important;
             position: absolute !important;
             top: 50% !important;
             transform: translateY(-50%) !important;

@@ -432,4 +432,37 @@ document.addEventListener('DOMContentLoaded', function() {
       showSlide(currentSlide + 1);
     }, 7000);
   });
+
+// Tambahkan dukungan swipe untuk perangkat touch
+const sliderWrapper = document.querySelector('.slider-wrapper-2');
+let touchStartX = 0;
+let touchEndX = 0;
+
+// Tangkap posisi awal touch
+sliderWrapper.addEventListener('touchstart', (e) => {
+  touchStartX = e.changedTouches[0].screenX;
+}, { passive: true });
+
+// Tangkap posisi akhir touch dan tentukan arah swipe
+sliderWrapper.addEventListener('touchend', (e) => {
+  touchEndX = e.changedTouches[0].screenX;
+  handleSwipe();
+}, { passive: true });
+
+// Fungsi untuk menangani swipe
+function handleSwipe() {
+  const swipeThreshold = 50; // Minimal jarak swipe (dalam pixel)
+  
+  // Jika swipe ke kiri (next slide)
+  if (touchStartX - touchEndX > swipeThreshold) {
+    showSlide(currentSlide + 1);
+  }
+  
+  // Jika swipe ke kanan (previous slide)
+  if (touchEndX - touchStartX > swipeThreshold) {
+    showSlide(currentSlide - 1);
+  }
+}
+
+
 });
