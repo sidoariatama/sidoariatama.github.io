@@ -351,3 +351,85 @@ function animateProgressBar(progressBar, targetWidth, duration) {
       observer.observe(bar);
     });
   });
+
+
+
+  //slider index
+  // Fungsi Slider Karya Terbaru
+document.addEventListener('DOMContentLoaded', function() {
+  const slides = document.querySelectorAll('.slide-2');
+  const dots = document.querySelectorAll('.dot-2');
+  const leftArrows = document.querySelectorAll('.left-arrow-2');
+  const rightArrows = document.querySelectorAll('.right-arrow-2');
+  
+  let currentSlide = 0;
+  
+  // Fungsi untuk menampilkan slide tertentu
+  function showSlide(index) {
+    slides.forEach(slide => slide.classList.remove('active-2'));
+    dots.forEach(dot => dot.classList.remove('active-2'));
+    
+    // Menangani navigasi melingkar
+    if (index >= slides.length) {
+      currentSlide = 0;
+    } else if (index < 0) {
+      currentSlide = slides.length - 1;
+    } else {
+      currentSlide = index;
+    }
+    
+    slides[currentSlide].classList.add('active-2');
+    dots[currentSlide].classList.add('active-2');
+  }
+  
+  // Event listener untuk tombol panah kiri di semua slide
+  leftArrows.forEach(arrow => {
+    arrow.addEventListener('click', (e) => {
+      e.preventDefault(); // Mencegah navigasi ke link
+      e.stopPropagation(); // Menghentikan event bubbling
+      showSlide(currentSlide - 1);
+    });
+  });
+  
+  // Event listener untuk tombol panah kanan di semua slide
+  rightArrows.forEach(arrow => {
+    arrow.addEventListener('click', (e) => {
+      e.preventDefault(); // Mencegah navigasi ke link
+      e.stopPropagation(); // Menghentikan event bubbling
+      showSlide(currentSlide + 1);
+    });
+  });
+  
+  // Event listener untuk dot
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      showSlide(index);
+    });
+  });
+  
+  // Menangani tombol "Lihat Proyek"
+  const viewButtons = document.querySelectorAll('.view-project-2');
+  viewButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+      e.stopPropagation(); // Biarkan link anchor bekerja secara normal
+    });
+  });
+  
+  // Slide otomatis (opsional)
+  let autoSlideInterval = setInterval(() => {
+    showSlide(currentSlide + 1);
+  }, 7000);
+  
+  // Menghentikan slide otomatis saat kursor di atas slider
+  const sliderContainer = document.querySelector('.slider-container-2');
+  sliderContainer.addEventListener('mouseenter', () => {
+    clearInterval(autoSlideInterval);
+  });
+  
+  // Melanjutkan slide otomatis saat kursor meninggalkan slider
+  sliderContainer.addEventListener('mouseleave', () => {
+    autoSlideInterval = setInterval(() => {
+      showSlide(currentSlide + 1);
+    }, 7000);
+  });
+});

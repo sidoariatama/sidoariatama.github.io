@@ -1214,4 +1214,194 @@ footer a:hover {
     }
   }
 
+
+
+
+  /*slider index*/
+/* Gaya Slider Karya Terbaru */
+.karya-terbaru-slider-2 {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    background-color: #1a1a1a;
+    color: #fff;
+    text-align: center; /* Memastikan teks header di tengah */
+  }
+  
+  .karya-terbaru-slider-2 .section-title-2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 36px;
+    padding: 30px 0 10px;
+    position: center;
+  }
+  
+  .karya-terbaru-slider-2 .section-title-2:after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 2px;
+    background-color: #d8b76e;
+    margin: 10px auto 30px;
+  }
+  
+  .slider-container-2 {
+    position: relative;
+    overflow: hidden;
+    height: 800px; /* Mengecilkan dari 500px menjadi 400px */
+    max-width: 70%; /* Membuat lebar gambar hanya 80% dari container */
+    margin: 0 auto; /* Membuat gambar berada di tengah */
+  }
+  
+  .slider-wrapper-2 {
+    height: 100%;
+    width: 100%;
+  }
+  
+  .slide-2 {
+    height: 100%;
+    width: 100%;
+    display: none;
+  }
+  
+  .slide-2.active-2 {
+    display: block;
+  }
+  
+  .slide-image-2 {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  
+  /* Info slide dengan efek hover */
+  .slide-info-2 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);
+    padding: 50px 30px 30px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    text-align: left; /* Mengubah text-align menjadi left */
+  }
+  
+  /* Efek hover untuk menampilkan info */
+  .slide-image-2:hover .slide-info-2 {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .slide-details-2 p {
+    margin-bottom: 10px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .slide-details-2 span {
+    color: #d8b76e;
+    margin-right: 10px;
+  }
+  
+  /* Tombol panah di dalam gambar */
+  .slider-arrow-2 {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+  }
+  
+  .slider-arrow-2:hover {
+    background-color: rgba(216, 183, 110, 0.8);
+    opacity: 1;
+  }
+  
+  .left-arrow-2 {
+    left: 20px;
+  }
+  
+  .right-arrow-2 {
+    right: 20px;
+  }
+  
+  .slider-dots-2 {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 10;
+  }
+  
+  .dot-2 {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .dot-2.active-2 {
+    background-color: #d8b76e;
+  }
+  
+  /* Tombol panah saat hover */
+  .slide-image-2:hover .slider-arrow-2 {
+    opacity: 1;
+  }
+
+  /* Untuk membuat slide bisa diklik */
+.slide-link-2 {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  /* Tombol untuk view project */
+  .view-project-2 {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 20px;
+    background-color: #d8b76e;
+    color: #000;
+    border: none;
+    border-radius: 3px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .view-project-2:hover {
+    background-color: #fff;
+    color: #333;
+  }
+  
+  /* Memperbaiki masalah event klik untuk tombol navigasi */
+  .slider-arrow-2 {
+    z-index: 20;
+  }
+
+
   
