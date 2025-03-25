@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>SA.PICTURA</title>
+    <meta name="description" content="Sido Ariatama Portfolio">
+    
+    <!-- Playfair Display - Raleway Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900|Raleway:100,300,400,600,700" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/dark-theme.css">
+
+    <style>
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+      
+      body {
+          background-color: #252525;
+          color: #333;
+          line-height: 1.6;
+      }
+      
+      header {
+          background-color: #1a1a1a;
+          color: white;
+          text-align: center;
+          padding: 30px 0;
+          position: relative;
+          overflow: hidden;
+          background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+          background-size: cover;
+          background-position: center;
+      }
+      
+      .header-bg {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: -1;
+      }
+      
+      .logo {
+          font-size: 2.2rem;
+          font-weight: 700;
+          margin-bottom: 10px;
+          position: relative;
+      }
+      
+      .tagline {
+          font-style: italic;
+          opacity: 0.8;
+          position: relative;
+      }
+      
+      .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 20px;
+      }
+      
+      .nav-menu {
+          display: flex;
+          justify-content: center;
+          background-color: #252525;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          margin-bottom: 30px;
+          overflow-x: auto;
+      }
+      
+      .nav-item {
+          padding: 15px 20px;
+          cursor: pointer;
+          font-weight: 600;
+          transition: all 0.3s ease;
+          white-space: nowrap;
+          color: white;
+      }
+      
+      .nav-item:hover {
+          background-color: #050505;
+      }
+      
+      .nav-item.active {
+          background-color: #4a4a4a;
+          color: white;
+      }
+
+      .nav-content {
+    display: none;
+}
+.nav-content.active {
+    display: block;
+}
+      
+      .price-section {
+          display: none;
+          padding: 20px;
+          background-color: #424242;
+          border-radius: 8px;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+          margin-bottom: 30px;
+      }
+      
+      .price-section.active {
+          display: block;
+          animation: fadeIn 0.5s ease-in-out;
+      }
+      
+      @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+      }
+      
+      .section-title {
+          color: #ffffff;
+          font-size: 1.8rem;
+          margin-top: -45px;
+          margin-bottom: 20px;
+          padding-bottom: 20px;
+          border-bottom: 2px solid #ddd;
+      }
+      
+      .section-image {
+          width: 100%;
+          height: 350px;
+          object-fit: cover;
+          border-radius: 8px;
+          margin-bottom: 25px;
+      }
+      
+      .price-card {
+          margin-bottom: 20px;
+          padding: 20px;
+          border-radius: 5px;
+          background-color: #ffffff;
+          transition: transform 0.3s ease;
+          display: flex;
+          flex-direction: row;
+          overflow: hidden;
+      }
+      
+      .price-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+      
+      .price-card-content {
+          flex: 1;
+          padding-right: 20px;
+      }
+      
+      .price-card-image {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+      
+      .price-card-image img {
+          width: 100%;
+          height: 350px;
+          object-fit: cover;
+          border-radius: 8px;
+      }
+      
+      .package-name {
+          font-size: 1.4rem;
+          color: #222;
+          margin-bottom: 10px;
+      }
+      
+      .price {
+          font-size: 1.6rem;
+          font-weight: bold;
+          color: #e67e22;
+          margin-bottom: 15px;
+      }
+      
+      .includes {
+          margin-bottom: 10px;
+          font-weight: 600;
+      }
+      
+      .feature-list {
+          list-style-type: none;
+          margin-left: 20px;
+      }
+      
+      .feature-list li {
+          padding: 5px 0;
+          position: relative;
+      }
+      
+      .feature-list li:before {
+          content: "✓";
+          color: #27ae60;
+          position: absolute;
+          left: -20px;
+      }
+        
+      footer {
+          text-align: center;
+          padding: 0px;
+          background-color: #1a1a1a;
+          color: white;
+          margin-top: 30px;
+      }
+
+      .additional-services {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+}
+
+.additional-title {
+    color: #ffffff;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.additional-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.additional-list {
+    list-style-type: none;
+    margin-bottom: 25px;
+}
+
+.additional-list li {
+    padding: 8px 0;
+    border-bottom: 1px dotted #e0e0e0;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr; /* 3 kolom: nama, harga, keterangan */
+    align-items: center;
+    gap: 10px;
+}
+
+.service-name {
+    font-weight: 600;
+    color: #333;
+    text-align: left;
+    grid-column: 1;
+}
+
+.service-price {
+    font-weight: 700;
+    color: #e67e22;
+    text-align: center; /* Rata tengah */
+    grid-column: 2;
+    white-space: nowrap; /* Mencegah harga terpisah ke baris baru */
+}
+
+/* Keterangan tambahan akan berada di kolom ketiga */
+.additional-list li:after {
+    content: attr(data-note);
+    grid-column: 3;
+    text-align: right;
+}
+
+/* Atau jika Anda menggunakan elemen untuk keterangan */
+.price-note {
+    grid-column: 3;
+    text-align: right;
+}
+
+.note .price-tag {
+  display: inline; /* Pada desktop, tampilkan sebaris */
+}
+      
+      @media (max-width: 768px) {
+          .nav-menu {
+              flex-wrap: wrap;
+          }
+          
+          .nav-item {
+              flex-basis: 50%;
+              text-align: center;
+              color: white;
+          }
+          
+          .price-card {
+              flex-direction: column;
+          }
+          
+          .price-card-content {
+              padding-right: 0;
+              padding-bottom: 20px;
+          }
+
+          .section-image {
+          width: 100%;
+          height: 130px;
+          object-fit: cover;
+          border-radius: 8px;
+          margin-bottom: 25px;
+        }
+
+      .price-card-image img {
+          width: 150%;
+          height: 200px;
+          object-fit: cover;
+          border-radius: 6px;
+      }
+
+      .additional-list li {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+    }
+    
+    .service-name {
+        grid-column: 1;
+        grid-row: 1;
+        text-align: center;
+    }
+    
+    .service-price {
+        grid-column: 1;
+        grid-row: 2;
+        text-align: center;
+        margin-top: 0px;
+    }
+    
+    .additional-list li:after,
+    .price-note {
+        grid-column: 1;
+        grid-row: 3;
+        text-align: center;
+        margin-top: -10px;
+        margin-bottom: 10px;
+        font-size: 0.9em;
+    }
+
+  .note .price-tag {
+    display: block; /* Pada mobile, pindah ke baris baru */
+    margin-top: -5px; /* Jarak minimal */
+    padding-top: -5px; /* Tambahan padding untuk memastikan terlihat */
+    padding-bottom: 5px;
+    width: 100%; /* Memastikan lebar penuh */
+    clear: both; /* Memastikan tidak ada elemen float yang mempengaruhi */
+  }
+  
+
+      }
+  </style>
+  </head>
+  <body>
+    <header>
+        <div class="logo">SA.PICTURA</div>
+        <div class="tagline">Daftar Harga</div>
+    </header>
+    
+    <div class="container">
+        <div class="nav-menu">
+            <div class="nav-item" data-target="wedding">Wedding</div>
+            <div class="nav-item" data-target="graduation">Graduation</div>
+            <div class="nav-item" data-target="Event">Event</div>
+
+        </div>
+        
+        <!-- WEDDING-->
+        <div id="wedding" class="price-section">
+            <h2 class="section-title">Wedding & Engaged</h2>
+            <img src="images/pricewedding.jpg" alt="Fotografi Pernikahan" class="section-image">
+            
+            <div class="price-card">
+                <div class="price-card-content">
+                    <h3 class="package-name">Convenant Package <span style="opacity:0.5;">(Lamaran / Sangjit)</span></h3>
+                    <div class="price">IDR 400K</div>
+                    <div class="includes">Termasuk:</div>
+                    <ul class="feature-list">
+                        <li>Durasi 3 Jam</li>
+                        <li>1 Fotografer</li>
+                        <li>Highlight Video</li>
+                        <li>Unlimited shoot</li>
+                        <li>25 foto diedit</li>
+                        <li>File digital semua foto (by request)</li>
+                    </ul>
+                    <div class="note">Tambahan<span class="price-tag"></span></div>
+                    <div class="note">+ 1 Videografer&ensp;&emsp;<span class="price-tag">IDR 125K (direkomendasikan)</span></div>
+                    <div class="note">+ 1 Jam Durasi &ensp;&emsp;<span class="price-tag">IDR 50K</span></div>
+                    <div class="note">Album Foto &emsp;&emsp;&ensp;&ensp;<span class="price-tag">IDR 160K - 300K</span></div>
+                    <div class="note">Cetak Bingkai &emsp;&emsp;<span class="price-tag">IDR 200K - 350K</span></div>
+                    <div class="note">Flashdisk 16GB &ensp;&emsp;<span class="price-tag">IDR 50K</span></div>
+                </div>
+                <div class="price-card-image">
+                    <img src="images/project-slider/rnr (4).webp" alt="Engaged">
+                </div>
+            </div>
+            
+            <div class="price-card">
+                <div class="price-card-content">
+                    <h3 class="package-name">Blessing Package</h3>
+                    <div class="price">IDR 500K</div>
+                    <div class="includes">Termasuk:</div>
+                    <ul class="feature-list">
+                        <li>Durasi 3-4 Jam termasuk jamuan kasih di gereja jika ada</li>
+                        <li>1 Fotografer</li>
+                        <li>Highlight video</li>
+                        <li>Unlimited shoot</li>
+                        <li>35 foto diedit</li>
+                        <li>File digital semua foto (by request)</li>
+                    </ul>
+                    <div class="note">Tambahan<span class="price-tag"></span></div>
+                    <div class="note">+ 1 Videografer&ensp;&emsp;<span class="price-tag">IDR 100K (direkomendasikan)</span></div>
+                    <div class="note">+ 1 Jam Durasi &ensp;&emsp;<span class="price-tag">IDR 50K</span></div>
+                    <div class="note">Album Foto &emsp;&emsp;&ensp;&ensp;<span class="price-tag">IDR 160K - 300K</span></div>
+                    <div class="note">Cetak Bingkai&ensp;&emsp;&emsp;<span class="price-tag">IDR 200K - 350K</span></div>
+                    <div class="note">Flashdisk 16GB &ensp;&emsp;<span class="price-tag">IDR 50K</span></div>
+                </div>
+                <div class="price-card-image">
+                    <img src="images/project-slider/hnl (2).webp" alt="">
+                </div>
+            </div>
+            
+            <div class="price-card">
+                <div class="price-card-content">
+                    <h3 class="package-name">Everlasting Package</h3>
+                    <div class="price">IDR 1.000K</div>
+                    <div class="includes">Termasuk:</div>
+                    <ul class="feature-list">
+                        <li>Dokumentasi full day</li>
+                        <li>1 Fotografer + 1 Videografer</li>
+                        <li>Fullframe Camera</li>
+                        <li>Highlight Video</li>
+                        <li>Unlimited Photo</li>
+                        <li>50 Foto Edit</li>
+                        <li>File digital semua foto</li>
+                        <li>Flashdisk 16GB</li>
+                    </ul>
+                    <!--<div class="note">* Belum termasuk transportasi luar kota</div>-->
+                </div>
+                <div class="price-card-image">
+                    <img src="images/project-slider/hnl (8).webp" alt="">
+                </div>
+            </div>
+
+            <div class="price-card">
+                <div class="price-card-content">
+                    <h3 class="package-name">Graceful Package</h3>
+                    <div class="price">IDR 1.500K</div>
+                    <div class="includes">Termasuk:</div>
+                    <ul class="feature-list">
+                        <li>Dokumentasi full day</li>
+                        <li>1 Fotografer + 1 Videografer</li>
+                        <li>Fullframe Camera</li>
+                        <li>Highlight Video</li>
+                        <li>Unlimited Photo</li>
+                        <li>60 Foto Edit</li>
+                        <li>Album magnetic mini 10 sheets / photobook</li>
+                        <li>File digital semua foto</li>
+                        <li>Flashdisk 16GB</li>
+                    </ul>
+                    <!--<div class="note">* Belum termasuk transportasi luar kota</div>-->
+                </div>
+                <div class="price-card-image">
+                    <img src="images/project-slider/ynn (2).webp" alt="">
+                </div>
+            </div>
+
+            <div class="price-card">
+                <div class="price-card-content">
+                    <h3 class="package-name">Eternal Package</h3>
+                    <div class="price">IDR 2.000K</div>
+                    <div class="includes">Termasuk:</div>
+                    <ul class="feature-list">
+                        <li>Dokumentasi full day</li>
+                        <li>1 Fotografer + 1 Videografer</li>
+                        <li>Fullframe Camera</li>
+                        <li>Highlight Video</li>
+                        <li>Unlimited Photo</li>
+                        <li>100 Foto Edit</li>
+                        <li>Album magnetic 10 sheets / photobook</li>
+                        <li>Cetak bingkai 40x60 1pcs</li>
+                        <li>File digital semua foto</li>
+                        <li>Flashdisk 16GB</li>
+                    </ul>
+                    <!--<div class="note">* Belum termasuk transportasi luar kota</div>-->
+                </div>
+                <div class="price-card-image">
+                    <img src="images/project-slider/pni (3).webp" alt="">
+                </div>
+            </div>
+
+            <div class="price-card">
+                <div class="price-card-content">
+                    <h3 class="package-name">Legacy Package</h3>
+                    <div class="price">IDR 2.500K</div>
+                    <div class="includes">Termasuk:</div>
+                    <ul class="feature-list">
+                        <li>Dokumentasi full day</li>
+                        <li>1 Fotografer + 1 Videografer</li>
+                        <li>Fullframe Camera</li>
+                        <li>Highlight Video</li>
+                        <li>Unlimited Photo</li>
+                        <li>120 Foto Edit</li>
+                        <li>Album magnetic 10 sheets / photobook</li>
+                        <li>Cetak bingkai 40x60 2pcs</li>
+                        <li>File digital semua foto</li>
+                        <li>Flashdisk 16GB</li>
+                    </ul>
+                    <!--<div class="note">* Belum termasuk transportasi luar kota</div>-->
+                </div>
+                <div class="price-card-image">
+                    <img src="images/project-slider/Adat -Sihotang.webp" alt="">
+                </div>
+            </div>
+
+            
+
+            
+        </div>
+        
+        <!-- Graduation-->
+        <div id="graduation" class="price-section">
+            <h2 class="section-title">Graduation</h2>
+            <img src="images/pricegrad.jpg" alt="Fotografi Wisuda" class="section-image">
+            
+            <div class="price-card">
+                <div class="price-card-content">
+                    <h3 class="package-name">Personal & Family Classic</h3>
+                    <div class="price">IDR 350K</div>
+                    <div class="includes">Termasuk:</div>
+                    <ul class="feature-list">
+                        <li>Sesi di 1 Tempat</li>
+                        <li>1 Wisudawan</li>
+                        <li>Durasi 60 Menit</li>
+                        <li>25 foto diedit</li>
+                        <li>File digital semua foto</li>
+                    </ul>
+                    <div class="note">* Maksimal 5 orang bersama keluarga. <span class="price-tag">(+ 50K / Orang)</span></div>
+                    <a href="javascript:void(0)" onclick="document.querySelector('.additional-services').scrollIntoView({behavior: 'smooth'})" style="text-decoration: none; color: #757575; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                        * Tambahan lainnya</a>
+                </div>
+                <div class="price-card-image">
+                    <img src="images/project-slider/personalgrad.webp" alt="Paket Individu">
+                </div>
+            </div>
+
+            <div class="price-card">
+                <div class="price-card-content">
+                    <h3 class="package-name">Personal & Family Luminous</h3>
+                    <div class="price">IDR 600K</div>
+                    <div class="includes">Termasuk:</div>
+                    <ul class="feature-list">
+                        <li>Sesi di 1 Tempat</li>
+                        <li>1 Wisudawan + Makeup & Hair do / Hijab do</li>
+                        <li>Durasi 60 Menit</li>
+                        <li>40 foto diedit</li>
+                        <li>File digital semua foto</li>
+                    </ul>
+                    <div class="note">* Maksimal 5 orang bersama keluarga. <span class="price-tag">(+ 50K / Orang)</span></div>
+                    <div class="note">* Makeup & hair do / hijab do. <span class="price-tag">(+ 300K / Orang) <br>Makeup by @Momontonang  </span></div>
+                    <a href="javascript:void(0)" onclick="document.querySelector('.additional-services').scrollIntoView({behavior: 'smooth'})" style="text-decoration: none; color: #757575; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                        * Tambahan lainnya</a>
+                </div>
+                <!--<div class="price-card-image">
+                    <img src="" alt="Paket Individu">
+                </div>-->
+            </div>
+
+            <div class="price-card">
+                <div class="price-card-content">
+                    <h3 class="package-name">Couple Package</h3>
+                    <div class="price">IDR 400K</div>
+                    <div class="includes">Termasuk:</div>
+                    <ul class="feature-list">
+                        <li>Sesi di 1 Tempat</li>
+                        <li>2 Wisudawan / 1 Wisudawan & Pasangan</li>
+                        <li>Durasi 60 Menit</li>
+                        <li>40 foto diedit</li>
+                        <li>File digital semua foto</li>
+                    </ul>
+                    <a href="javascript:void(0)" onclick="document.querySelector('.additional-services').scrollIntoView({behavior: 'smooth'})" style="text-decoration: none; color: #757575; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                        * Tambahan lainnya</a>
+                </div>
+                <div class="price-card-image">
+                    <img src="images/project-slider/couplegrad.webp" alt="Paket Individu">
+                </div>
+            </div>
+            
+            <div class="price-card">
+                <div class="price-card-content">
+                    <h3 class="package-name">Group Package (3-5 Wisudawan)</h3>
+                    <div class="price">IDR 500K</div>
+                    <div class="includes">Termasuk:</div>
+                    <ul class="feature-list">
+                        <li>Sesi di 1 tempat</li>
+                        <li>Durasi 60 menit</li>
+                        <li>40 foto diedit</li>
+                        <li>File digital semua foto</li>
+                    </ul>
+                    <div class="note">* Maksimal 5 orang. (+ 50K / Orang)<br> </div>
+                    <a href="javascript:void(0)" onclick="document.querySelector('.additional-services').scrollIntoView({behavior: 'smooth'})" style="text-decoration: none; color: #757575; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                        * Tambahan lainnya</a>
+                </div>
+                <!--<div class="price-card-image">
+                    <img src="/api/placeholder/400/300" alt="Paket Group">
+                </div>-->
+            </div>
+            
+            <div class="additional-services">
+                <h3 class="additional-title">Layanan Tambahan</h3>
+                <div class="additional-card">
+                    <div class="additional-content">
+                        <ul class="additional-list">
+                            <li data-note="per orang"><span class="service-name">Tambahan orang</span> <span class="service-price">IDR 50K</span></li>
+                            <li data-note="per orang"><span class="service-name">MUA & Hair do / Hijab do Wisudawan</span> <span class="service-price">IDR 350K</span></li>
+                            <li data-note="per orang"><span class="service-name">MUA & Hair do / Hijab do non Wisudawan</span> <span class="service-price">IDR 300K</span></li>
+                            <li data-note=" "><span class="service-name"> </span> <span class="service-price"> </span></li>
+                            <li data-note="per jam"><span class="service-name">Extra time</span> <span class="service-price">IDR 100K</span></li>
+                            <li data-note="per lokasi dalam kota"><span class="service-name">Lokasi tambahan</span> <span class="service-price">IDR 100K</span></li>
+                            <li data-note="per video"><span class="service-name">Short video</span> <span class="service-price">IDR 100K</span></li>
+                            <li data-note=" "><span class="service-name"> </span> <span class="service-price"> </span></li>
+                            <li data-note="per 15 foto"><span class="service-name">Edit foto</span> <span class="service-price">IDR 50K</span></li>
+                            <li data-note="tergantung ukuran"><span class="service-name">Cetak foto</span> <span class="service-price">IDR 5K - 100K</span></li>
+                            <li data-note="tergantung ukuran"><span class="service-name">Cetak foto blok</span> <span class="service-price">IDR 60K - 200K</span></li>
+                            <li data-note="8inc x 6inc"><span class="service-name">Cetak photobook</span> <span class="service-price">IDR 120K</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        <!-- Event-->
+        <div id="Event" class="price-section">
+            <h2 class="section-title">Event</h2>
+            <img src="images/priceevent.jpg" alt="Dokumentasi Acara" class="section-image">
+            
+            <div class="price-card">
+                <div class="price-card-content">
+                    <h3 class="package-name">Essence Package <span style="opacity:0.5;">(Maks 3 jam)</span></h3>
+                    <div class="includes">Event singkat : Perform, Rapat, Pertemuan, Makan malam, dll.</div>
+                    <div class="price">IDR 350K</div>
+                    <ul class="feature-list">
+                        <li>1 Fotografer</li>
+                        <li>Unlimited shoot</li>
+                        <li>Hasil foto di sortir</li>
+                        <li>File digital semua foto (by request)</li>
+                    </ul>
+                    <div class="note">Tambahan<span class="price-tag"></span></div>
+                    <div class="note">Highlight Video&ensp;&emsp;<span class="price-tag">IDR 75K (orang yang sama)</span></div>
+                    <div class="note">+ 1 Videografer&ensp;&emsp;<span class="price-tag">IDR 125K (direkomendasikan)</span></div>
+                </div>
+                <div class="price-card-image">
+                    <img src="images/project-slider/ostsingstudentperform (3).webp" alt="Essence">
+                </div>
+            </div>
+            
+            <div class="price-card">
+                <div class="price-card-content">
+                    <h3 class="package-name">Momentum Package <span style="opacity:0.5;">(4 - 8 jam)</span></h3>
+                    <div class="includes">Event Half Day: 1 day Gathering, Seminar, Peresmian, dll.</div>
+                    <div class="price">IDR 700K</div>
+                    <ul class="feature-list">
+                        <li>1 Fotografer</li>
+                        <li>Video highlight</li>
+                        <li>Unlimited shoot</li>
+                        <li>Hasil foto di sortir</li>
+                        <li>File digital semua foto (by request)</li>
+                    </ul>
+                    <div class="note">Tambahan<span class="price-tag"></span></div>
+                    <div class="note">+ 1 Videografer&ensp;&emsp;<span class="price-tag">IDR 100K (direkomendasikan)</span></div>
+                    <div class="note">+ 1 Jam Durasi &ensp;&emsp;<span class="price-tag">IDR 50K</span></div>
+                    <div class="note">Fullframe Camera &ensp;<span class="price-tag">IDR 300K</span></div>
+                </div>
+                <div class="price-card-image">
+                    <img src="images/Natal-GAMKI.jpg" alt="Momentum">
+                </div>
+            </div>
+            
+            <div class="price-card">
+                <div class="price-card-content">
+                    <h3 class="package-name">Legacy Package <span style="opacity:0.5;">(Maks 2 hari 1 malam / 16-20 jam)</span></h3>
+                    <div class="includes">Event Full Day: Gathering, Retreat, Festival.</div>
+                    <div class="price">IDR 1250K</div>
+                    <div class="includes" style="margin-top: -15px;"><span style="opacity:0.5;">Penginapan & konsumsi disediakan klien.</span></div>
+                    <ul class="feature-list">
+                        <li>1 Fotografer</li>
+                        <li>1 Videografer</li>
+                        <li>Fullframe Camera</li>
+                        <li>Video highlight</li>
+                        <li>Unlimited shoot</li>
+                        <li>Hasil foto di sortir</li>
+                        <li>File digital semua foto (by request)</li>
+                    </ul>
+                    <div class="note">Tambahan<span class="price-tag"></span></div>
+                    <div class="note">Video Drone &emsp;&emsp;<span class="price-tag">IDR 300K</span></div>
+                    <div class="note">+ 1 Fotografer&ensp;&emsp;<span class="price-tag">IDR 350K</span></div>
+                    <div class="note">+ 1 Hari &emsp;&emsp;&emsp;&emsp;<span class="price-tag">IDR 400K</span></div>
+                </div>
+                <div class="price-card-image">
+                    <img src="images/project-slider/paskahpmkunjani.webp" alt="Legacy">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+      <div class="container-fluid">
+        <div class="footer-info">
+          <div class="footer-title">
+            <h2>SA.PICTURA</h2>
+            <!--<p>&copy; Hak Cipta 2025. Seluruh Hak Dilindungi.</p>-->
+          </div>
+          <div class="footer-social">
+            <a href="https://sidoariatama.github.io" target="_blank"> <i class="fas fa-camera"></i> </a>
+            <a href="https://www.instagram.com/sidoaria_/" target="_blank"> <i class="fab fa-instagram"></i> </a>
+            <a href="https://www.instagram.com/sa.pictura/" target="_blank"> <i class="fab fa-instagram"></i> </a>
+            <a href="https://wa.me/6281321472571?text=Halo,%20saya%20tertarik%20dengan%20layanan%20Anda!" target="_blank"> <i class="fab fa-whatsapp"></i> </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- jQuery, Popper.js, Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          const navItems = document.querySelectorAll('.nav-item');
+          const priceSections = document.querySelectorAll('.price-section');
+          
+          navItems.forEach(item => {
+              item.addEventListener('click', function() {
+                  // Remove active class from all nav items
+                  navItems.forEach(nav => nav.classList.remove('active'));
+                  
+                  // Add active class to clicked nav item
+                  this.classList.add('active');
+                  
+                  // Hide all price sections
+                  priceSections.forEach(section => section.classList.remove('active'));
+                  
+                  // Show target price section
+                  const targetId = this.getAttribute('data-target');
+                  document.getElementById(targetId).classList.add('active');
+              });
+          });
+      });
+
+
+      
+      document.addEventListener("DOMContentLoaded", function () {
+    let navItems = document.querySelectorAll(".nav-item");
+    let navContents = document.querySelectorAll(".nav-content");
+
+    function activateTab(target) {
+        // Reset semua tab
+        navContents.forEach(content => content.classList.remove("active"));
+        navItems.forEach(item => item.classList.remove("active"));
+
+        // Aktifkan tab yang dipilih
+        let activeContent = document.getElementById(target);
+        let activeNav = document.querySelector(`.nav-item[data-target="${target}"]`);
+
+        if (activeContent) activeContent.classList.add("active");
+        if (activeNav) activeNav.classList.add("active");
+    }
+
+    // 1️⃣ Ambil dari Hash (#event, #wedding, dll.)
+    function updateTabFromHash() {
+        let hash = window.location.hash.substring(1); // Ambil nama setelah #
+        let navTarget = hash || "wedding"; // Jika tidak ada hash, default ke "wedding"
+        activateTab(navTarget);
+    }
+
+    // 2️⃣ Pastikan hanya satu tab aktif saat halaman pertama kali dibuka
+    navContents.forEach(content => content.classList.remove("active")); // Reset semua tab
+    updateTabFromHash(); // Aktifkan tab sesuai hash atau default
+
+    // 3️⃣ Klik navigasi untuk mengganti tab
+    navItems.forEach(item => {
+        item.addEventListener("click", function () {
+            let target = this.getAttribute("data-target");
+            activateTab(target);
+            window.location.hash = target; // Ubah URL ke format #event tanpa reload
+        });
+    });
+
+    // 4️⃣ Deteksi perubahan hash di URL (misal, user copy-paste link langsung)
+    window.addEventListener("hashchange", updateTabFromHash);
+});
+
+
+
+  </script>
+  </body>
+</html>
