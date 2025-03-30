@@ -221,7 +221,7 @@ Nav Bar Styles
     z-index: 9999;
     pointer-events: none;
     background-color: transparent;
-    border-color: #717171;
+    border-color: #bebebe;
     border-style: solid;
     height: 90px;
     position: fixed;
@@ -1047,11 +1047,11 @@ footer a:hover {
         font-family: 'Playfair Display', serif;
         font-weight: 700;
         font-size: 40px;
-        color: #fff;
+        color: #d8b76e;
         margin: 0;
         letter-spacing: 1px;
         display: inline-block;
-        background-color: #222; /* Match client-slider background */
+        background-color: #f4f4f4; /* Match client-slider background */
         padding: 10px 30px;
         border-radius: 5px;
         box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
@@ -1060,7 +1060,7 @@ footer a:hover {
       .changing-text {
         position: relative;
         display: inline-block;
-        color: #fff; /* Warna putih untuk teks berubah */
+        color: #d8b76e; /* Warna putih untuk teks berubah */
         min-width: 10px; /* Minimum width */
       }
       
@@ -1068,7 +1068,7 @@ footer a:hover {
       .cursor {
         display: inline-block;
         width: 3px;
-        color: #fff;
+        color: #d8b76e;
         animation: blink 0.7s infinite;
         font-weight: 100;
       }
@@ -1081,7 +1081,7 @@ footer a:hover {
       /* Client Slider Styles */
       .client-slider {
         padding: 150px 0 30px 0; /* Increased padding-top to account for overlapping text */
-        background-color: #222;
+        background-color: #F4F4F4;
         position: relative;
         overflow: hidden;
         margin-top: 0px;
@@ -1092,7 +1092,7 @@ footer a:hover {
         font-weight: 700;
         font-size: 36px;
         margin-bottom: -85px;
-        color: #fff;
+        color: #d8b76e;
       }
       
       .subtitle {
@@ -1101,7 +1101,7 @@ footer a:hover {
         font-size: 24px;
         margin-bottom: 60px;
         transition: opacity 0.15s ease !important;
-        color: #fff;
+        color: #414141;
       }
       
       /* Infinite Slider Solution */
@@ -1147,7 +1147,7 @@ footer a:hover {
         bottom: 20px;
         left: 50%;
         width: 2px;
-        background-color: rgba(255, 255, 255, 0.2);
+        background-color: rgba(0, 0, 0, 0.2);
       }
 
       .category-divider::before {
@@ -1157,7 +1157,7 @@ footer a:hover {
       .client-logo {
         max-width: 100%;
         max-height: 80px;
-        filter: grayscale(80%) brightness(1.5);
+        filter: grayscale(20%) brightness(1);
         transition: filter 0.3s ease, transform 0.3s ease;
       }
       
@@ -1178,12 +1178,12 @@ footer a:hover {
       
       .slider-gradient.left {
         left: 0;
-        background: linear-gradient(to right, #222 0%, rgba(34, 34, 34, 0) 100%);
+        background: linear-gradient(to right, #f4f4f4 0%, rgba(34, 34, 34, 0) 100%);
       }
       
       .slider-gradient.right {
         right: 0;
-        background: linear-gradient(to left, #222 0%, rgba(34, 34, 34, 0) 100%);
+        background: linear-gradient(to left, #f4f4f4 0%, rgba(34, 34, 34, 0) 100%);
       }
       
       /* Responsive adjustments */
@@ -1286,6 +1286,7 @@ footer a:hover {
     font-weight: 500;
     display: block;
     margin-top: 20px;
+    color: #d8b76e;
   }
   
   .clienti-reviews .reviews span {
@@ -1372,7 +1373,7 @@ footer a:hover {
     margin: 0;
     padding: 0;
     position: relative;
-    background-color: #1a1a1a;
+    background-color: #f4f4f4;
     color: #fff;
     text-align: center; /* Memastikan teks header di tengah */
   }
@@ -1446,6 +1447,7 @@ footer a:hover {
   }
   
   .slide-details-2 p {
+    color: #F4F4F4;
     margin-bottom: 10px;
     font-family: 'Raleway', sans-serif;
     font-size: 18px;
